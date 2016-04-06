@@ -87,10 +87,10 @@ public class BackgroundGenerator {
 	}
 	
 	public static Color chooseColor(){
-	  	float red = rand.nextFloat()  	* (125/255);
-		float blue = rand.nextFloat() 	* (255/255);
-		float green = rand.nextFloat() 	* (125/255);
-		float alpha = rand.nextFloat()	* (255/255);
+	  	float red = rand.nextFloat();
+		float blue = rand.nextFloat();
+		float green = rand.nextFloat();
+		float alpha = rand.nextFloat();
 		Color chosenColor = new Color(red,blue,green,alpha);
 		return chosenColor;
 	}
