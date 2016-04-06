@@ -25,10 +25,9 @@ public class BackgroundGenerator {
 	public static final int RECT_MAX_HEIGHT = 250;
 	public static final int MAX_POLYGON_POINTS = 10;
 	public static final int MAX_POLYGON_DISTANCE = 125;
-	public static final int MAX_OBJECT_NUMBER = 10000;
 	
 	public static boolean CIRCLES = false;
-	public static boolean SQUARES = true;
+	public static boolean SQUARES = false;
 	public static boolean POLYGONS = true;
 	
 	public static void exportFile(Graphics2D graphic, BufferedImage image){
@@ -75,11 +74,12 @@ public class BackgroundGenerator {
 		int[] yPoints = new int[polygonPoints];
 		int x = rand.nextInt(width);
 		int y = rand.nextInt(height);
+		int maxDistance = rand.nextInt(MAX_POLYGON_DISTANCE);
 		for(int i = 0; i < polygonPoints; i++){
-			xPoints[i] = x + (rand.nextInt(MAX_POLYGON_DISTANCE) - MAX_POLYGON_DISTANCE/2);
+			xPoints[i] = rand.nextInt(maxDistance*2) - maxDistance;
 		}
 		for(int j = 0; j < polygonPoints; j++){
-			yPoints[j] = y + (rand.nextInt(MAX_POLYGON_DISTANCE) - MAX_POLYGON_DISTANCE/2);
+			yPoints[j] = rand.nextInt(maxDistance*2) - maxDistance;
 		}
 		
 		g.setColor( chooseColor() );
@@ -105,20 +105,20 @@ public class BackgroundGenerator {
 
 		Graphics2D graphic = image.createGraphics();
 		if (SQUARES){
-			int maxNumSquares = rand.nextInt(MAX_OBJECT_NUMBER);
+			int maxNumSquares = rand.nextInt(1000);
 			for(int squares = 0; squares <= maxNumSquares; squares ++){
 				drawSquare(graphic);
 			}
 		}
 		if (CIRCLES){
-			int maxNumCircles = rand.nextInt(MAX_OBJECT_NUMBER);
+			int maxNumCircles = rand.nextInt(500);
 			for(int circles = 0; circles <= maxNumCircles; circles++)
 			{
 				drawCenteredCircle(graphic);
 			}
 		}
 		if (POLYGONS){
-			int maxNumCircles = rand.nextInt(MAX_OBJECT_NUMBER);
+			int maxNumCircles = rand.nextInt(500);
 			for(int circles = 0; circles <= maxNumCircles; circles++)
 			{
 				drawPolygons(graphic);
