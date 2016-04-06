@@ -19,22 +19,24 @@ public class BackgroundGenerator {
 	public static final int RECT_MAX_HEIGHT = 250;
 	public static final int MAX_POLYGON_POINTS = 10;
 	public static final int MAX_POLYGON_DISTANCE = 125;
-	public static final int MAX_OBJECT_NUMBER = 5000;
+	public static final int MAX_OBJECT_NUMBER = 1000;
 	
 	public static boolean CIRCLES = false;
-	public static boolean SQUARES = true;
-	public static boolean POLYGONS = true;
+	public static boolean SQUARES = false;
+	public static boolean POLYGONS = false;
 	
 	//255 is maximum
-	public static float BASE_RED = 0;
-	public static float BASE_GREEN = 204;
-	public static float BASE_BLUE = 0;
-	public static float DELTA = 50;
+	public static int BASE_RED = 77;
+	public static int BASE_BLUE = 0;
+	public static int BASE_GREEN = 0;
+	public static int WEIGHT_RED = 77;
+	public static int WEIGHT_BLUE = 0;
+	public static int WEIGHT_GREEN = 0;
 	
 	public static Color chooseColor(){
-	  	float red = Math.min((BASE_RED/255) + (rand.nextFloat() * (DELTA/100)),1);
-		float blue = Math.min((BASE_BLUE/255) + (rand.nextFloat() * (DELTA/100)),1);
-		float green = Math.min((BASE_GREEN/255) + (rand.nextFloat() * (DELTA/100)),1);
+	  	float red = (BASE_RED/255) + (rand.nextFloat() * (WEIGHT_RED/100));
+		float blue = (BASE_BLUE/255) + (rand.nextFloat() * (WEIGHT_BLUE/100));
+		float green = (BASE_GREEN/255) + (rand.nextFloat() * (WEIGHT_GREEN/100));
 		float alpha = rand.nextFloat();
 		Color chosenColor = new Color(red,green,blue,alpha);
 		return chosenColor;

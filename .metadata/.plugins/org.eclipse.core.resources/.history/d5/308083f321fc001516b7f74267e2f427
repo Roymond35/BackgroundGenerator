@@ -1,10 +1,16 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.Image;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Time;
+import java.util.Calendar;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
@@ -19,22 +25,21 @@ public class BackgroundGenerator {
 	public static final int RECT_MAX_HEIGHT = 250;
 	public static final int MAX_POLYGON_POINTS = 10;
 	public static final int MAX_POLYGON_DISTANCE = 125;
-	public static final int MAX_OBJECT_NUMBER = 5000;
+	public static final int MAX_OBJECT_NUMBER = 1000;
 	
 	public static boolean CIRCLES = false;
-	public static boolean SQUARES = true;
-	public static boolean POLYGONS = true;
+	public static boolean SQUARES = false;
+	public static boolean POLYGONS = false;
 	
 	//255 is maximum
-	public static float BASE_RED = 0;
-	public static float BASE_GREEN = 204;
-	public static float BASE_BLUE = 0;
-	public static float DELTA = 50;
+	public static int WEIGHT_RED = 255;
+	public static int WEIGHT_BLUE = 255;
+	public static int WEIGHT_GREEN = 255;
 	
 	public static Color chooseColor(){
-	  	float red = Math.min((BASE_RED/255) + (rand.nextFloat() * (DELTA/100)),1);
-		float blue = Math.min((BASE_BLUE/255) + (rand.nextFloat() * (DELTA/100)),1);
-		float green = Math.min((BASE_GREEN/255) + (rand.nextFloat() * (DELTA/100)),1);
+	  	float red = rand.nextFloat()  	* (WEIGHT_RED/255);
+		float blue = rand.nextFloat() 	* (WEIGHT_BLUE/255);
+		float green = rand.nextFloat() 	* (WEIGHT_GREEN/255);
 		float alpha = rand.nextFloat();
 		Color chosenColor = new Color(red,green,blue,alpha);
 		return chosenColor;
