@@ -23,9 +23,6 @@ public class BackgroundGenerator {
 	public static final int RECT_MAX_WIDTH = 250;
 	public static final int RECT_MAX_HEIGHT = 250;
 	
-	public static boolean CIRCLES = true;
-	public static boolean SQUARES = true;
-	
 	public static void exportFile(Graphics2D graphic, BufferedImage image){
 		long currentTime = System.currentTimeMillis();
 		String fileName = "Backgrounds\\background_" + String.valueOf(currentTime) + ".png";
@@ -83,20 +80,20 @@ public class BackgroundGenerator {
 
 
 		Graphics2D graphic = image.createGraphics();
+		
+		if (CIRCLES){
+			int maxNumCircles = rand.nextInt(1);
+			for(int circles = 0; circles <= maxNumCircles; circles++)
+			{
+				drawCenteredCircle(graphic);
+			}
+		}
 		if (SQUARES){
 			int maxNumSquares = rand.nextInt(1000);
 			for(int squares = 0; squares <= maxNumSquares; squares ++){
 				drawSquare(graphic);
 			}
 		}
-		if (CIRCLES){
-			int maxNumCircles = rand.nextInt(500);
-			for(int circles = 0; circles <= maxNumCircles; circles++)
-			{
-				drawCenteredCircle(graphic);
-			}
-		}
-
 
 		
 		

@@ -83,20 +83,20 @@ public class BackgroundGenerator {
 
 
 		Graphics2D graphic = image.createGraphics();
+		
+		if (CIRCLES){
+			int maxNumCircles = rand.nextInt(1000);
+			for(int circles = 0; circles <= maxNumCircles; circles++)
+			{
+				drawCenteredCircle(graphic);
+			}
+		}
 		if (SQUARES){
 			int maxNumSquares = rand.nextInt(1000);
 			for(int squares = 0; squares <= maxNumSquares; squares ++){
 				drawSquare(graphic);
 			}
 		}
-		if (CIRCLES){
-			int maxNumCircles = rand.nextInt(500);
-			for(int circles = 0; circles <= maxNumCircles; circles++)
-			{
-				drawCenteredCircle(graphic);
-			}
-		}
-
 
 		
 		

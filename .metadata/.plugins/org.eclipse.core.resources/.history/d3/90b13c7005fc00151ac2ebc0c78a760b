@@ -90,7 +90,7 @@ public class BackgroundGenerator {
 			}
 		}
 		if (CIRCLES){
-			int maxNumCircles = rand.nextInt(500);
+			int maxNumCircles = rand.nextInt(1000);
 			for(int circles = 0; circles <= maxNumCircles; circles++)
 			{
 				drawCenteredCircle(graphic);

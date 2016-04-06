@@ -23,9 +23,6 @@ public class BackgroundGenerator {
 	public static final int RECT_MAX_WIDTH = 250;
 	public static final int RECT_MAX_HEIGHT = 250;
 	
-	public static boolean CIRCLES = true;
-	public static boolean SQUARES = true;
-	
 	public static void exportFile(Graphics2D graphic, BufferedImage image){
 		long currentTime = System.currentTimeMillis();
 		String fileName = "Backgrounds\\background_" + String.valueOf(currentTime) + ".png";
@@ -71,7 +68,7 @@ public class BackgroundGenerator {
 		float alpha = rand.nextFloat();
 		Color squareColor = new Color(red,blue,green,alpha);
 		g.setColor(squareColor);
-		g.fill(new Rectangle(x,y,width,height));
+		graphic.fill(new Rectangle(100,100,250,250));
 	}
 	
 	public static void generateBackground(){
@@ -80,23 +77,15 @@ public class BackgroundGenerator {
 		rand = new Random();
 				
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
-
+		int maxNumCircles = rand.nextInt(10000);
+		int maxNumSquares = rand.nextInt(15);
 		Graphics2D graphic = image.createGraphics();
-		if (SQUARES){
-			int maxNumSquares = rand.nextInt(1000);
-			for(int squares = 0; squares <= maxNumSquares; squares ++){
-				drawSquare(graphic);
-			}
+		
+		for(int circles = 0; circles <= maxNumCircles; circles++)
+		{
+			drawCenteredCircle(graphic);
 		}
-		if (CIRCLES){
-			int maxNumCircles = rand.nextInt(500);
-			for(int circles = 0; circles <= maxNumCircles; circles++)
-			{
-				drawCenteredCircle(graphic);
-			}
-		}
-
+		
 
 		
 		

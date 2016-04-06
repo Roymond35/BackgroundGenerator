@@ -20,12 +20,6 @@ public class BackgroundGenerator {
 	public static int width;
 	public static int height;
 	
-	public static final int RECT_MAX_WIDTH = 250;
-	public static final int RECT_MAX_HEIGHT = 250;
-	
-	public static boolean CIRCLES = true;
-	public static boolean SQUARES = true;
-	
 	public static void exportFile(Graphics2D graphic, BufferedImage image){
 		long currentTime = System.currentTimeMillis();
 		String fileName = "Backgrounds\\background_" + String.valueOf(currentTime) + ".png";
@@ -54,50 +48,22 @@ public class BackgroundGenerator {
 		g.fillOval(x,y,r,r);
 	}
 	
-	public static void drawSquare(Graphics2D g){
-		int x = rand.nextInt(width);
-		int y = rand.nextInt(height);
-		int width, height;
-		if (rand.nextBoolean()){
-			width = rand.nextInt(RECT_MAX_WIDTH);
-			height = width;
-		} else {
-			width = rand.nextInt(RECT_MAX_WIDTH);
-			height = rand.nextInt(RECT_MAX_HEIGHT);
-		}
-	  	float red = rand.nextFloat();
-		float blue = rand.nextFloat();
-		float green = rand.nextFloat();
-		float alpha = rand.nextFloat();
-		Color squareColor = new Color(red,blue,green,alpha);
-		g.setColor(squareColor);
-		g.fill(new Rectangle(x,y,width,height));
-	}
-	
 	public static void generateBackground(){
 		width = 1920;
 		height = 1080;
 		rand = new Random();
 				
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
-
+		int maxNumCircles = rand.nextInt(10000);
 		Graphics2D graphic = image.createGraphics();
-		if (SQUARES){
-			int maxNumSquares = rand.nextInt(1000);
-			for(int squares = 0; squares <= maxNumSquares; squares ++){
-				drawSquare(graphic);
-			}
+		
+		for(int circles = 0; circles <= maxNumCircles; circles++)
+		{
+			drawCenteredCircle(graphic);
 		}
-		if (CIRCLES){
-			int maxNumCircles = rand.nextInt(500);
-			for(int circles = 0; circles <= maxNumCircles; circles++)
-			{
-				drawCenteredCircle(graphic);
-			}
-		}
-
-
+		
+		graphic.setColor(Color.RED);
+		graphic.fill(new Rectangle(100,100,250,250));
 		
 		
 		exportFile(graphic, image);
