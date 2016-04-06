@@ -31,15 +31,11 @@ public class BackgroundGenerator {
 	public static boolean SQUARES = true;
 	public static boolean POLYGONS = true;
 	
-	public static int WEIGHT_RED = 125;
-	public static int WEIGHT_BLUE = 125;
-	public static int WEIGHT_GREEN = 125;
-	
 	public static Color chooseColor(){
-	  	float red = rand.nextFloat()  	* (WEIGHT_RED/255);
-		float blue = rand.nextFloat() 	* (WEIGHT_BLUE/255);
-		float green = rand.nextFloat() 	* (WEIGHT_GREEN/255);
-		float alpha = rand.nextFloat();
+	  	float red = rand.nextFloat()  	* (255/255);
+		float blue = rand.nextFloat() 	* (255/255);
+		float green = rand.nextFloat() 	* (125/255);
+		float alpha = rand.nextFloat()	* (255/255);
 		Color chosenColor = new Color(red,green,blue,alpha);
 		return chosenColor;
 	}
