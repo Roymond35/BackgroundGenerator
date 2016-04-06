@@ -35,8 +35,7 @@ public class BackgroundGenerator {
 	  	  float red = rand.nextFloat();
 		  float blue = rand.nextFloat();
 		  float green = rand.nextFloat();
-		  float alpha = rand.nextFloat();
-		  Color circleColor = new Color(red,blue,green,alpha);
+		  Color circleColor = new Color(red,blue,green,1);
 		  g.setColor(circleColor);
 		  g.fillOval(x,y,r,r);
 		}
