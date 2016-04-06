@@ -25,11 +25,11 @@ public class BackgroundGenerator {
 	public static final int RECT_MAX_HEIGHT = 250;
 	public static final int MAX_POLYGON_POINTS = 10;
 	public static final int MAX_POLYGON_DISTANCE = 125;
-	public static final int MAX_OBJECT_NUMBER = 1000;
+	public static final int MAX_OBJECT_NUMBER = 10000;
 	
 	public static boolean CIRCLES = false;
-	public static boolean SQUARES = false;
-	public static boolean POLYGONS = false;
+	public static boolean SQUARES = true;
+	public static boolean POLYGONS = true;
 	
 	//255 is maximum
 	public static int WEIGHT_RED = 255;
@@ -101,6 +101,9 @@ public class BackgroundGenerator {
 	}
 	
 	public static void generateBackground(){
+		width = 1920;
+		height = 1080;
+		rand = new Random();
 				
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
@@ -135,11 +138,13 @@ public class BackgroundGenerator {
 
 	public static void main(String[] args) {
 		for(int counter = 0; counter < 13; counter++){
-			while(!CIRCLES && !SQUARES && !POLYGONS){
-				CIRCLES = rand.nextBoolean();
-				SQUARES = rand.nextBoolean();
-				POLYGONS = rand.nextBoolean();
-			}
+			
+			WEIGHT_GREEN = rand.nextInt(255);
+			WEIGHT_RED = rand.nextInt(255);
+			WEIGHT_BLUE = rand.nextInt(255);
+			CIRCLES = rand.nextBoolean();
+			SQUARES = rand.nextBoolean();
+			POLYGONS = rand.nextBoolean();
 			
 			generateBackground();
 		}

@@ -28,8 +28,8 @@ public class BackgroundGenerator {
 	public static final int MAX_OBJECT_NUMBER = 1000;
 	
 	public static boolean CIRCLES = false;
-	public static boolean SQUARES = false;
-	public static boolean POLYGONS = false;
+	public static boolean SQUARES = true;
+	public static boolean POLYGONS = true;
 	
 	//255 is maximum
 	public static int WEIGHT_RED = 255;

@@ -28,8 +28,8 @@ public class BackgroundGenerator {
 	public static final int MAX_OBJECT_NUMBER = 1000;
 	
 	public static boolean CIRCLES = false;
-	public static boolean SQUARES = false;
-	public static boolean POLYGONS = false;
+	public static boolean SQUARES = true;
+	public static boolean POLYGONS = true;
 	
 	//255 is maximum
 	public static int WEIGHT_RED = 255;
@@ -135,11 +135,16 @@ public class BackgroundGenerator {
 
 	public static void main(String[] args) {
 		for(int counter = 0; counter < 13; counter++){
-			while(!CIRCLES && !SQUARES && !POLYGONS){
-				CIRCLES = rand.nextBoolean();
-				SQUARES = rand.nextBoolean();
-				POLYGONS = rand.nextBoolean();
-			}
+			
+			WEIGHT_GREEN = rand.nextInt(100)+155;
+			WEIGHT_RED = rand.nextInt(100)+155;
+			WEIGHT_BLUE = rand.nextInt(100)+155;
+			System.out.println(WEIGHT_GREEN);
+			System.out.println(WEIGHT_BLUE);
+			System.out.println(WEIGHT_RED);
+			CIRCLES = rand.nextBoolean();
+			SQUARES = rand.nextBoolean();
+			POLYGONS = rand.nextBoolean();
 			
 			generateBackground();
 		}
