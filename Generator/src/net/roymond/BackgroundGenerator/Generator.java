@@ -33,9 +33,9 @@ public class Generator {
 	
 	public static class Builder {
 		
-		private boolean CIRCLES = rand.nextBoolean();
-		private boolean SQUARES = rand.nextBoolean();
-		private boolean POLYGONS = rand.nextBoolean();
+		private boolean CIRCLES = false;
+		private boolean SQUARES = false;
+		private boolean POLYGONS = false;
 		private int width = 1920;
 		private int height = 1080;
 		private float BASE_RED = rand.nextInt(255);
@@ -107,6 +107,11 @@ public class Generator {
 		}
 		
 		public Generator build(){
+			while (!CIRCLES && !SQUARES && !POLYGONS){
+				CIRCLES = rand.nextBoolean();
+				SQUARES = rand.nextBoolean();
+				POLYGONS = rand.nextBoolean();	
+			}
 			return new Generator(this);
 		}
 	}
