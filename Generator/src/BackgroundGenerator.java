@@ -27,9 +27,9 @@ public class BackgroundGenerator {
 	
 	//255 is maximum
 	public static float BASE_RED = 0;
-	public static float BASE_GREEN = 204;
-	public static float BASE_BLUE = 0;
-	public static float DELTA = 50;
+	public static float BASE_GREEN = 153;
+	public static float BASE_BLUE = 153;
+	public static float DELTA = 75;
 	
 	public static Color chooseColor(){
 	  	float red = Math.min((BASE_RED/255) + (rand.nextFloat() * (DELTA/100)),1);
@@ -98,9 +98,13 @@ public class BackgroundGenerator {
 	public static void generateBackground(){
 				
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
+		
 
 		Graphics2D graphic = image.createGraphics();
+		graphic.setColor(new Color(BASE_RED/255,BASE_GREEN/255,BASE_BLUE/255,1));
+		graphic.fillRect(0, 0, width, height);
+		
+		
 		if (SQUARES){
 			int maxNumSquares = rand.nextInt(MAX_OBJECT_NUMBER);
 			for(int squares = 0; squares <= maxNumSquares; squares ++){
