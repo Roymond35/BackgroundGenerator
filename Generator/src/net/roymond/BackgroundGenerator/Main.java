@@ -7,7 +7,7 @@ public class Main {
 
 		Generator gen = new Generator.Builder().build();
 		try {
-			gen = new Generator.Builder().setDelta(80).setOctogons(true).setPolygons(true).setMaxObjects(1337).build();
+			gen = new Generator.Builder().setDelta(80).setMaxObjects(10).build();
 		} catch (InvalidValueException e) {
 			e.printStackTrace();
 		}

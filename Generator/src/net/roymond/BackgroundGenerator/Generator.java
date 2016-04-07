@@ -51,6 +51,26 @@ public class Generator {
 			return this;
 		}
 		
+		public Builder setShapes(String shapes){
+			try{
+				String[] listOfShapes = shapes.split(",");
+				for( int i=0; i< listOfShapes.length; i++ ){
+					String d = listOfShapes[i].toLowerCase();
+					switch(d){
+						case "circles" : CIRCLES = true; break;
+						case "squares" : SQUARES = true; break;
+						case "polygons" : POLYGONS = true; break;
+						case "octogons" : OCTOGONS = true; break;
+						default:  break;
+					}
+				}
+				
+			} catch (Exception e){
+				e.printStackTrace();
+			}
+			return this;
+		}
+		
 		public Builder setSquares(boolean choice){
 			SQUARES = choice;
 			return this;
@@ -231,6 +251,8 @@ public class Generator {
 		Graphics2D graphic = image.createGraphics();
 		graphic.setColor(new Color(BASE_RED/255,BASE_GREEN/255,BASE_BLUE/255,1));
 		graphic.fillRect(0, 0, width, height);
+		
+		System.out.println(String.valueOf(SQUARES) + " " + String.valueOf(CIRCLES) + " " + String.valueOf(POLYGONS) + " " +String.valueOf(OCTOGONS));
 		
 		if (SQUARES){
 			int maxNumSquares = rand.nextInt(MAX_OBJECT_NUMBER);
