@@ -23,7 +23,7 @@ public class Generator {
 	private boolean CIRCLES;
 	private boolean SQUARES;
 	private boolean POLYGONS;
-	private boolean OCTOGONS;
+	private boolean OCTAGONS;
 	private int width;
 	private int height;
 	private float BASE_RED;
@@ -40,7 +40,7 @@ public class Generator {
 		private boolean CIRCLES = false;
 		private boolean SQUARES = false;
 		private boolean POLYGONS = false;
-		private boolean OCTOGONS = false;
+		private boolean OCTAGONS = false;
 		private int width = 1920;
 		private int height = 1080;
 		private float BASE_RED = rand.nextInt(255);
@@ -66,7 +66,7 @@ public class Generator {
 						case "circles" : CIRCLES = true; break;
 						case "squares" : SQUARES = true; break;
 						case "polygons" : POLYGONS = true; break;
-						case "octogons" : OCTOGONS = true; break;
+						case "octagons" : OCTAGONS = true; break;
 						default:  break;
 					}
 				}
@@ -87,8 +87,8 @@ public class Generator {
 			return this;
 		}
 		
-		public Builder setOctogons(boolean choice){
-			OCTOGONS = choice;
+		public Builder setOctagons(boolean choice){
+			OCTAGONS = choice;
 			return this;
 		}
 		
@@ -154,11 +154,11 @@ public class Generator {
 		}
 		
 		public Generator build(){
-			while (!CIRCLES && !SQUARES && !POLYGONS && !OCTOGONS){
+			while (!CIRCLES && !SQUARES && !POLYGONS && !OCTAGONS){
 				CIRCLES = rand.nextBoolean();
 				SQUARES = rand.nextBoolean();
 				POLYGONS = rand.nextBoolean();
-				OCTOGONS = rand.nextBoolean();
+				OCTAGONS = rand.nextBoolean();
 			}
 			return new Generator(this);
 		}
@@ -168,7 +168,7 @@ public class Generator {
 		CIRCLES = builder.CIRCLES;
 		SQUARES = builder.SQUARES;
 		POLYGONS = builder.POLYGONS;
-		OCTOGONS = builder.OCTOGONS;
+		OCTAGONS = builder.OCTAGONS;
 		width = builder.width;
 		height = builder.height;
 		BASE_RED = builder.BASE_RED;
@@ -246,7 +246,7 @@ public class Generator {
 		g.fill(new Polygon(xPoints, yPoints, xPoints.length));
 	}
 	
-	public void drawOctogons(Graphics2D g){
+	public void drawOctagons(Graphics2D g){
 		int[] xPoints = new int[8];
 		int[] yPoints = new int[8];
 		
@@ -289,11 +289,11 @@ public class Generator {
 				drawCenteredCircle(graphic);
 			}
 		}
-		if (OCTOGONS){
+		if (OCTAGONS){
 			int maxNum = rand.nextInt(MAX_OBJECT_NUMBER);
 			for(int it = 0; it <= maxNum; it++)
 			{
-				drawOctogons(graphic);
+				drawOctagons(graphic);
 			}
 		}
 		if (POLYGONS){
