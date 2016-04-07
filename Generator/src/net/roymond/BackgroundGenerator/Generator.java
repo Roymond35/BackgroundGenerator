@@ -245,18 +245,18 @@ public class Generator {
 				drawCenteredCircle(graphic);
 			}
 		}
-		if (POLYGONS){
-			int maxNum = rand.nextInt(MAX_OBJECT_NUMBER);
-			for(int it = 0; it <= maxNum; it++)
-			{
-				drawPolygons(graphic);
-			}
-		}
 		if (OCTOGONS){
 			int maxNum = rand.nextInt(MAX_OBJECT_NUMBER);
 			for(int it = 0; it <= maxNum; it++)
 			{
 				drawOctogons(graphic);
+			}
+		}
+		if (POLYGONS){
+			int maxNum = rand.nextInt(MAX_OBJECT_NUMBER);
+			for(int it = 0; it <= maxNum; it++)
+			{
+				drawPolygons(graphic);
 			}
 		}
 

@@ -13,4 +13,7 @@
 <fullyQualifiedTypeName name="java.awt.geom.Rectangle2D"/>
 <fullyQualifiedTypeName name="java.awt.Rectangle"/>
 <fullyQualifiedTypeName name="java.awt.Polygon"/>
+<fullyQualifiedTypeName name="java.lang.Float"/>
+<fullyQualifiedTypeName name="net.roymond.BackgroundGenerator.Generator"/>
+<fullyQualifiedTypeName name="net.roymond.BackgroundGenerator.Generator.Builder"/>
 </qualifiedTypeNameHistroy>
