@@ -23,6 +23,7 @@ public class Generator {
 	private boolean CIRCLES;
 	private boolean SQUARES;
 	private boolean POLYGONS;
+	private boolean OCTOGONS;
 	private int width;
 	private int height;
 	private float BASE_RED;
@@ -36,6 +37,7 @@ public class Generator {
 		private boolean CIRCLES = false;
 		private boolean SQUARES = false;
 		private boolean POLYGONS = false;
+		private boolean OCTOGONS = false;
 		private int width = 1920;
 		private int height = 1080;
 		private float BASE_RED = rand.nextInt(255);
@@ -56,6 +58,11 @@ public class Generator {
 		
 		public Builder setPolygons(boolean choice){
 			POLYGONS = choice;
+			return this;
+		}
+		
+		public Builder setOctogons(boolean choice){
+			OCTOGONS = choice;
 			return this;
 		}
 		
@@ -107,10 +114,11 @@ public class Generator {
 		}
 		
 		public Generator build(){
-			while (!CIRCLES && !SQUARES && !POLYGONS){
+			while (!CIRCLES && !SQUARES && !POLYGONS && !OCTOGONS){
 				CIRCLES = rand.nextBoolean();
 				SQUARES = rand.nextBoolean();
-				POLYGONS = rand.nextBoolean();	
+				POLYGONS = rand.nextBoolean();
+				OCTOGONS = rand.nextBoolean();
 			}
 			return new Generator(this);
 		}
@@ -120,6 +128,7 @@ public class Generator {
 		CIRCLES = builder.CIRCLES;
 		SQUARES = builder.SQUARES;
 		POLYGONS = builder.POLYGONS;
+		OCTOGONS = builder.OCTOGONS;
 		width = builder.width;
 		height = builder.height;
 		BASE_RED = builder.BASE_RED;
@@ -193,10 +202,31 @@ public class Generator {
 		g.fill(new Polygon(xPoints, yPoints, xPoints.length));
 	}
 	
+	public void drawOctogons(Graphics2D g){
+		int[] xPoints = new int[8];
+		int[] yPoints = new int[8];
+		
+		int centerX = rand.nextInt(width);
+		int centerY = rand.nextInt(height);
+		int octHeight = rand.nextInt(RECT_MAX_WIDTH/2);
+		if(octHeight % 2 != 0){
+			octHeight++;
+		}
+		int rValue = octHeight/2;
+		//points starting top left going counter clockwise
+		xPoints[0] = centerX - rValue; yPoints[0] = centerY + octHeight;
+		xPoints[1] = centerX - octHeight; yPoints[1] = centerY + rValue;
+		xPoints[2] = centerX - octHeight; yPoints[2] = centerY - rValue;
+		xPoints[3] = centerX - rValue; yPoints[3] = centerY - octHeight;
+		xPoints[4] = centerX + rValue; yPoints[4] = centerY - octHeight;
+		xPoints[5] = centerX + octHeight; yPoints[5] = centerY - rValue;
+		xPoints[6] = centerX + octHeight; yPoints[6] = centerY + rValue;
+		xPoints[7] = centerX + rValue; yPoints[7] = centerY + octHeight;
+		g.setColor( chooseColor() );
+		g.fill(new Polygon(xPoints, yPoints, xPoints.length));
+	}
+	
 	public void generateBackground(){
-		
-		
-				
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D graphic = image.createGraphics();
 		graphic.setColor(new Color(BASE_RED/255,BASE_GREEN/255,BASE_BLUE/255,1));
@@ -216,12 +246,20 @@ public class Generator {
 			}
 		}
 		if (POLYGONS){
-			int maxNumCircles = rand.nextInt(MAX_OBJECT_NUMBER);
-			for(int circles = 0; circles <= maxNumCircles; circles++)
+			int maxNum = rand.nextInt(MAX_OBJECT_NUMBER);
+			for(int it = 0; it <= maxNum; it++)
 			{
 				drawPolygons(graphic);
 			}
 		}
+		if (OCTOGONS){
+			int maxNum = rand.nextInt(MAX_OBJECT_NUMBER);
+			for(int it = 0; it <= maxNum; it++)
+			{
+				drawOctogons(graphic);
+			}
+		}
+
 		
 		exportFile(graphic, image);
 		System.out.println("Completed");

@@ -7,12 +7,12 @@ public class Main {
 
 		Generator gen = new Generator.Builder().build();
 		try {
-			gen = new Generator.Builder().setSquares(true).setDelta(40).setRGB(133, 175, 110).build();
+			gen = new Generator.Builder().setOctogons(false).setOctogons(true).setCircles(true).setDelta(40).setMaxObjects(100).build();
 		} catch (InvalidValueException e) {
 			e.printStackTrace();
 		}
 		
-		for (int i = 0; i < 10; i++){
+		for (int i = 0; i < 1; i++){
 			gen.generateBackground();
 		}
 		
