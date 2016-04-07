@@ -29,6 +29,9 @@ public class Generator {
 	private float BASE_RED;
 	private float BASE_GREEN;
 	private float BASE_BLUE;
+	private boolean allowRed;
+	private boolean allowGreen;
+	private boolean allowBlue;
 	private float DELTA;
 	private int MAX_OBJECT_NUMBER;
 	
@@ -43,6 +46,9 @@ public class Generator {
 		private float BASE_RED = rand.nextInt(255);
 		private float BASE_GREEN = rand.nextInt(255);
 		private float BASE_BLUE = rand.nextInt(255);
+		private boolean allowRed = true;
+		private boolean allowGreen = true;
+		private boolean allowBlue = true;
 		private float DELTA = 75;
 		private int MAX_OBJECT_NUMBER = 5000;
 		
@@ -133,6 +139,20 @@ public class Generator {
 			return this;
 		}
 		
+		public Builder freezeColor(String choice){
+			String[] options = choice.split(",");
+			for( int i=0; i< options.length; i++ ){
+				String d = options[i].toLowerCase();
+				switch(d){
+					case "r" : allowRed = false; break;
+					case "g" : allowGreen = false; break;
+					case "b" : allowBlue = false; break;
+					default:  break;
+				}
+			}
+			return this;
+		}
+		
 		public Generator build(){
 			while (!CIRCLES && !SQUARES && !POLYGONS && !OCTOGONS){
 				CIRCLES = rand.nextBoolean();
@@ -154,14 +174,18 @@ public class Generator {
 		BASE_RED = builder.BASE_RED;
 		BASE_GREEN = builder.BASE_GREEN;
 		BASE_BLUE = builder.BASE_BLUE;
+		allowRed = builder.allowRed;
+		allowGreen = builder.allowGreen;
+		allowBlue = builder.allowBlue;
 		DELTA = builder.DELTA;
 		MAX_OBJECT_NUMBER = builder.MAX_OBJECT_NUMBER;
 	}
 	
 	public Color chooseColor(){
-	  	float red = Math.min((BASE_RED/255) + (rand.nextFloat() * (DELTA/100)),1);
-		float blue = Math.min((BASE_BLUE/255) + (rand.nextFloat() * (DELTA/100)),1);
-		float green = Math.min((BASE_GREEN/255) + (rand.nextFloat() * (DELTA/100)),1);
+		float red = BASE_RED/255; float green = BASE_GREEN/255; float blue = BASE_BLUE/255;
+		if (allowRed) { red = Math.min((BASE_RED/255) + (rand.nextFloat() * (DELTA/100)),1); }
+		if (allowBlue) { blue = Math.min((BASE_BLUE/255) + (rand.nextFloat() * (DELTA/100)),1); }
+		if (allowGreen) { green = Math.min((BASE_GREEN/255) + (rand.nextFloat() * (DELTA/100)),1); }
 		float alpha = rand.nextFloat();
 		Color chosenColor = new Color(red,green,blue,alpha);
 		return chosenColor;
@@ -251,9 +275,7 @@ public class Generator {
 		Graphics2D graphic = image.createGraphics();
 		graphic.setColor(new Color(BASE_RED/255,BASE_GREEN/255,BASE_BLUE/255,1));
 		graphic.fillRect(0, 0, width, height);
-		
-		System.out.println(String.valueOf(SQUARES) + " " + String.valueOf(CIRCLES) + " " + String.valueOf(POLYGONS) + " " +String.valueOf(OCTOGONS));
-		
+				
 		if (SQUARES){
 			int maxNumSquares = rand.nextInt(MAX_OBJECT_NUMBER);
 			for(int squares = 0; squares <= maxNumSquares; squares ++){
