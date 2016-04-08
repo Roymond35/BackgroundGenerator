@@ -7,7 +7,7 @@ public class Main {
 
 		Generator gen = new Generator.Builder().build();
 		try {
-			gen = new Generator.Builder().setDelta(25).setMaxObjects(1000).setRGB(100,0,0).freezeColor("r").build();
+			gen = new Generator.Builder().setDelta(25).setMaxObjects(1000).setRGB(0,125,0).freezeColor("rb").build();
 		} catch (InvalidValueException e) {
 			e.printStackTrace();
 		}

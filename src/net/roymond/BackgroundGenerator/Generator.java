@@ -140,14 +140,21 @@ public class Generator {
 		}
 		
 		public Builder freezeColor(String choice){
-			String[] options = choice.split(",");
-			for( int i=0; i< options.length; i++ ){
-				String d = options[i].toLowerCase();
-				switch(d){
-					case "r" : allowRed = false; break;
-					case "g" : allowGreen = false; break;
-					case "b" : allowBlue = false; break;
-					default:  break;
+			char[] charChoice = choice.toLowerCase().toCharArray();
+			for(int z = 0; z <charChoice.length; z++) {
+				char c = charChoice[z];
+				switch (c) {
+					case 'r':
+						allowRed = false;
+						break;
+					case 'g':
+						allowGreen = false;
+						break;
+					case 'b':
+						allowBlue = false;
+						break;
+					default:
+						break;
 				}
 			}
 			return this;
