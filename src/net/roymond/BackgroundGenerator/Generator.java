@@ -141,9 +141,22 @@ public class Generator {
 			}
 			return this;
 		}
+
+		public Builder setRed(int choice){
+			BASE_RED = choice;
+			return this;
+		}
+		public Builder setGreen(int choice){
+			BASE_GREEN = choice;
+			return this;
+		}
+		public Builder setBlue(int choice){
+			BASE_BLUE = choice;
+			return this;
+		}
 		
 		public Builder setDelta(float value) throws InvalidValueException{
-			if (value <= 100 && value >=0){
+			if (value <= 255 && value >=0){
 				DELTA = value;
 			} else {
 				throw new InvalidValueException("Delta Value must be between 0 and 255"); 
@@ -178,6 +191,20 @@ public class Generator {
 						break;
 				}
 			}
+			return this;
+		}
+
+		public Builder freezeRed(boolean choice){
+			allowRed = !choice; // True means don't do it... false means do.
+			return this;
+		}
+
+		public Builder freezeGreen(boolean choice){
+			allowGreen = !choice; // True means don't do it... false means do.
+			return this;
+		}
+		public Builder freezeBlue(boolean choice){
+			allowBlue = !choice; // True means don't do it... false means do.
 			return this;
 		}
 		
@@ -223,6 +250,7 @@ public class Generator {
 	
 	public void exportFile(Graphics2D graphic, BufferedImage image){
 		long currentTime = System.currentTimeMillis();
+		if (fileExtension.equals("")) { fileExtension = "png"; }
 		String fileName;
 		if (exportDir.equals("")){
 			fileName = filePrefix + "_" + String.valueOf(currentTime) + "." + fileExtension;
