@@ -34,6 +34,9 @@ public class Generator {
 	private boolean allowBlue;
 	private float DELTA;
 	private int MAX_OBJECT_NUMBER;
+	private String exportDir;
+	private String filePrefix;
+	private String fileExtension;
 	
 	public static class Builder {
 		
@@ -51,6 +54,9 @@ public class Generator {
 		private boolean allowBlue = true;
 		private float DELTA = 75;
 		private int MAX_OBJECT_NUMBER = 5000;
+		private String exportDir = "";
+		private String filePrefix = "backgrounds_";
+		private String fileExtension = "png";
 		
 		public Builder setCircles(boolean choice){
 			CIRCLES = choice;
@@ -99,6 +105,21 @@ public class Generator {
 		
 		public Builder setHeight(int choice){
 			height = choice;
+			return this;
+		}
+
+		public Builder setExtension(String ext){
+			fileExtension = ext;
+			return this;
+		}
+
+		public Builder setFilePrefix(String str){
+			filePrefix = str;
+			return this;
+		}
+
+		public Builder setExportDir(String dir){
+			exportDir = dir;
 			return this;
 		}
 		
@@ -186,6 +207,9 @@ public class Generator {
 		allowBlue = builder.allowBlue;
 		DELTA = builder.DELTA;
 		MAX_OBJECT_NUMBER = builder.MAX_OBJECT_NUMBER;
+		filePrefix = builder.filePrefix;
+		exportDir = builder.exportDir;
+		fileExtension = builder.fileExtension;
 	}
 	
 	public Color chooseColor(){
@@ -194,17 +218,21 @@ public class Generator {
 		if (allowBlue) { blue = Math.min((BASE_BLUE/255) + (rand.nextFloat() * (DELTA/100)),1); }
 		if (allowGreen) { green = Math.min((BASE_GREEN/255) + (rand.nextFloat() * (DELTA/100)),1); }
 		float alpha = rand.nextFloat();
-		Color chosenColor = new Color(red,green,blue,alpha);
-		return chosenColor;
+		return new Color(red,green,blue,alpha);
 	}
 	
 	public void exportFile(Graphics2D graphic, BufferedImage image){
 		long currentTime = System.currentTimeMillis();
-		String fileName = "Backgrounds\\background_" + String.valueOf(currentTime) + ".png";
+		String fileName;
+		if (exportDir.equals("")){
+			fileName = filePrefix + "_" + String.valueOf(currentTime) + "." + fileExtension;
+		} else {
+			fileName = exportDir + "\\" + filePrefix + "_" + String.valueOf(currentTime) + "." + fileExtension;
+		}
 		File outputFile = new File(fileName);
 		graphic.drawImage(image, null, 0, 0);
 		try {
-			ImageIO.write(image, "png", outputFile);
+			ImageIO.write(image, fileExtension, outputFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
