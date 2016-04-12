@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BackgroundGenerator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BackgroundGenerator_jar</output-path>
+    <root id="archive" name="BackgroundGenerator.jar">
+      <element id="module-output" name="BackgroundGenerator" />
+    </root>
+  </artifact>
+</component>

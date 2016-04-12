@@ -51,6 +51,9 @@ public class SetupWindow {
     private JTextField numberOfRuns;
     private JLabel numRuns;
     private JLabel errorText;
+    private JButton resetButton;
+    private JPanel buttonPanel;
+    private JList list1;
 
     //Actual Variables
     int imageWidth;
@@ -95,7 +98,15 @@ public class SetupWindow {
                     gen.setRed(checkColor(baseRedValue));
                     gen.setGreen(checkColor(baseGreenValue));
                     gen.setBlue(checkColor(baseBlueValue));
-                    gen.setDelta(checkColor(deltaValue));
+
+                    if (!heightField.getText().equals("")){
+                        float delta = Float.valueOf(deltaValue.getText());
+                        if (delta > 100){
+                            delta = 100;
+                            deltaValue.setText(String.valueOf(delta));
+                        }
+                        gen.setDelta(delta);
+                    }
 
                     gen.setCircles(turnOnCircles.isSelected());
                     gen.setSquares(turnOnSquares.isSelected());
@@ -108,7 +119,15 @@ public class SetupWindow {
 
                     gen.setExportDir(exportDirValue.getText());
                     gen.setFilePrefix(prefixValue.getText());
-                    if(exportExt.getText().equals("")) { gen.setExtension("png"); } else { gen.setExtension(exportExt.getText()); } // This might barf...
+
+                    //Time for the export extension
+                    String[] options = {"png","jpg","bmp"};
+                    if (list1.isSelectionEmpty()){
+                        gen.setExtension("png");
+                    } else {
+                        String option = options[list1.getSelectedIndex()];
+                        gen.setExtension(option);
+                    }
 
                     Generator generator = gen.build();
 
@@ -130,6 +149,29 @@ public class SetupWindow {
                 }
 
 
+            }
+        });
+
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                widthField.setText("");
+                heightField.setText("");
+                baseRedValue.setText("");
+                baseBlueValue.setText("");
+                baseGreenValue.setText("");
+                deltaValue.setText("");
+                freezeRed.setSelected(false);
+                freezeGreen.setSelected(false);
+                freezeBlue.setSelected(false);
+                turnOnCircles.setSelected(false);
+                turnOnOctagons.setSelected(false);
+                turnOnSquares.setSelected(false);
+                turnOnPolygons.setSelected(false);
+                exportDirValue.setText("");
+                prefixValue.setText("");
+                numberOfRuns.setText("");
+                list1.clearSelection();
             }
         });
     }

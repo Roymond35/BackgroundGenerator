@@ -156,7 +156,7 @@ public class Generator {
 		}
 		
 		public Builder setDelta(float value) throws InvalidValueException{
-			if (value <= 255 && value >=0){
+			if (value <= 100 && value >=0){
 				DELTA = value;
 			} else {
 				throw new InvalidValueException("Delta Value must be between 0 and 255"); 
