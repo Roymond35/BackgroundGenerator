@@ -7,10 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be0c2440-2831-4463-9333-519f55f1e922" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/BackgroundGenerator_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Generator.java" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Generator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java" />
     </list>
@@ -44,17 +41,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SetupWindow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SetupWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.8993056">
-              <caret line="187" column="13" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="83" column="71" selection-start-line="83" selection-start-column="71" selection-end-line="83" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2926#5653#0" expanded="true" />
-                <element signature="e#5652#5653#0" expanded="true" />
-                <element signature="e#5695#6580#0" expanded="true" />
-                <element signature="e#6579#6580#0" expanded="true" />
+                <element signature="e#3042#3322#0" expanded="true" />
+                <element signature="e#3321#3322#0" expanded="true" />
+                <element signature="e#3363#3651#0" expanded="true" />
+                <element signature="e#3650#3651#0" expanded="true" />
+                <element signature="e#3691#3975#0" expanded="true" />
+                <element signature="e#3974#3975#0" expanded="true" />
+                <element signature="e#4016#4304#0" expanded="true" />
+                <element signature="e#4303#4304#0" expanded="true" />
+                <element signature="e#4349#7064#0" expanded="true" />
+                <element signature="e#7063#7064#0" expanded="true" />
+                <element signature="e#7106#7991#0" expanded="true" />
+                <element signature="e#7990#7991#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,13 +70,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#1374#0" expanded="false" />
-                <element signature="e#773#774#0" expanded="false" />
-                <element signature="e#796#797#0" expanded="false" />
-                <element signature="e#1003#1004#0" expanded="false" />
-                <element signature="e#1028#1029#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,7 +153,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SetupWindow.form" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SetupWindow.form" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
@@ -191,8 +190,8 @@
         <option value="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Window.java" />
         <option value="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Main.java" />
         <option value="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Generator.java" />
-        <option value="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" />
         <option value="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java" />
+        <option value="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" />
       </list>
     </option>
   </component>
@@ -624,7 +623,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460400539716</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Adding the reset button. For some reason it doesn't always reset the values however. I think I am going to have to refactor the numeric inputs...">
+      <created>1460468900571</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1460468900571</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -638,7 +643,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1064" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32943678" sideWeight="0.49791667" order="6" side_tool="false" content_ui="tabs" />
@@ -653,7 +658,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973205" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33708468" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33708468" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -703,7 +708,8 @@
     <MESSAGE value="Started playing around with the UI." />
     <MESSAGE value="Added the basic layout. Still not completely happy with it but it can work." />
     <MESSAGE value="I think that this is good enough to be tested now." />
-    <option name="LAST_COMMIT_MESSAGE" value="I think that this is good enough to be tested now." />
+    <MESSAGE value="Adding the reset button. For some reason it doesn't always reset the values however. I think I am going to have to refactor the numeric inputs..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding the reset button. For some reason it doesn't always reset the values however. I think I am going to have to refactor the numeric inputs..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -730,10 +736,18 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2926#5653#0" expanded="true" />
-            <element signature="e#5652#5653#0" expanded="true" />
-            <element signature="e#5695#6580#0" expanded="true" />
-            <element signature="e#6579#6580#0" expanded="true" />
+            <element signature="e#3042#3322#0" expanded="true" />
+            <element signature="e#3321#3322#0" expanded="true" />
+            <element signature="e#3363#3651#0" expanded="true" />
+            <element signature="e#3650#3651#0" expanded="true" />
+            <element signature="e#3691#3975#0" expanded="true" />
+            <element signature="e#3974#3975#0" expanded="true" />
+            <element signature="e#4016#4304#0" expanded="true" />
+            <element signature="e#4303#4304#0" expanded="true" />
+            <element signature="e#4349#7064#0" expanded="true" />
+            <element signature="e#7063#7064#0" expanded="true" />
+            <element signature="e#7106#7991#0" expanded="true" />
+            <element signature="e#7990#7991#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -742,13 +756,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1374#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#796#797#0" expanded="false" />
-            <element signature="e#1003#1004#0" expanded="false" />
-            <element signature="e#1028#1029#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -856,10 +864,18 @@
           <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="43" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2926#5653#0" expanded="true" />
-            <element signature="e#5652#5653#0" expanded="true" />
-            <element signature="e#5695#6580#0" expanded="true" />
-            <element signature="e#6579#6580#0" expanded="true" />
+            <element signature="e#3042#3322#0" expanded="true" />
+            <element signature="e#3321#3322#0" expanded="true" />
+            <element signature="e#3363#3651#0" expanded="true" />
+            <element signature="e#3650#3651#0" expanded="true" />
+            <element signature="e#3691#3975#0" expanded="true" />
+            <element signature="e#3974#3975#0" expanded="true" />
+            <element signature="e#4016#4304#0" expanded="true" />
+            <element signature="e#4303#4304#0" expanded="true" />
+            <element signature="e#4349#7064#0" expanded="true" />
+            <element signature="e#7063#7064#0" expanded="true" />
+            <element signature="e#7106#7991#0" expanded="true" />
+            <element signature="e#7990#7991#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -892,10 +908,18 @@
           <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2926#5653#0" expanded="true" />
-            <element signature="e#5652#5653#0" expanded="true" />
-            <element signature="e#5695#6580#0" expanded="true" />
-            <element signature="e#6579#6580#0" expanded="true" />
+            <element signature="e#3042#3322#0" expanded="true" />
+            <element signature="e#3321#3322#0" expanded="true" />
+            <element signature="e#3363#3651#0" expanded="true" />
+            <element signature="e#3650#3651#0" expanded="true" />
+            <element signature="e#3691#3975#0" expanded="true" />
+            <element signature="e#3974#3975#0" expanded="true" />
+            <element signature="e#4016#4304#0" expanded="true" />
+            <element signature="e#4303#4304#0" expanded="true" />
+            <element signature="e#4349#7064#0" expanded="true" />
+            <element signature="e#7063#7064#0" expanded="true" />
+            <element signature="e#7106#7991#0" expanded="true" />
+            <element signature="e#7990#7991#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -936,10 +960,18 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2926#5653#0" expanded="true" />
-            <element signature="e#5652#5653#0" expanded="true" />
-            <element signature="e#5695#6580#0" expanded="true" />
-            <element signature="e#6579#6580#0" expanded="true" />
+            <element signature="e#3042#3322#0" expanded="true" />
+            <element signature="e#3321#3322#0" expanded="true" />
+            <element signature="e#3363#3651#0" expanded="true" />
+            <element signature="e#3650#3651#0" expanded="true" />
+            <element signature="e#3691#3975#0" expanded="true" />
+            <element signature="e#3974#3975#0" expanded="true" />
+            <element signature="e#4016#4304#0" expanded="true" />
+            <element signature="e#4303#4304#0" expanded="true" />
+            <element signature="e#4349#7064#0" expanded="true" />
+            <element signature="e#7063#7064#0" expanded="true" />
+            <element signature="e#7106#7991#0" expanded="true" />
+            <element signature="e#7990#7991#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -980,10 +1012,18 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2926#5653#0" expanded="true" />
-            <element signature="e#5652#5653#0" expanded="true" />
-            <element signature="e#5695#6580#0" expanded="true" />
-            <element signature="e#6579#6580#0" expanded="true" />
+            <element signature="e#3042#3322#0" expanded="true" />
+            <element signature="e#3321#3322#0" expanded="true" />
+            <element signature="e#3363#3651#0" expanded="true" />
+            <element signature="e#3650#3651#0" expanded="true" />
+            <element signature="e#3691#3975#0" expanded="true" />
+            <element signature="e#3974#3975#0" expanded="true" />
+            <element signature="e#4016#4304#0" expanded="true" />
+            <element signature="e#4303#4304#0" expanded="true" />
+            <element signature="e#4349#7064#0" expanded="true" />
+            <element signature="e#7063#7064#0" expanded="true" />
+            <element signature="e#7106#7991#0" expanded="true" />
+            <element signature="e#7990#7991#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1045,20 +1085,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="18" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/lang/NumberFormatException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1374#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#796#797#0" expanded="false" />
-            <element signature="e#1003#1004#0" expanded="false" />
-            <element signature="e#1028#1029#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1136,6 +1162,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/lang/NumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="71" selection-start-line="83" selection-start-column="71" selection-end-line="83" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3042#3322#0" expanded="true" />
+            <element signature="e#3321#3322#0" expanded="true" />
+            <element signature="e#3363#3651#0" expanded="true" />
+            <element signature="e#3650#3651#0" expanded="true" />
+            <element signature="e#3691#3975#0" expanded="true" />
+            <element signature="e#3974#3975#0" expanded="true" />
+            <element signature="e#4016#4304#0" expanded="true" />
+            <element signature="e#4303#4304#0" expanded="true" />
+            <element signature="e#4349#7064#0" expanded="true" />
+            <element signature="e#7063#7064#0" expanded="true" />
+            <element signature="e#7106#7991#0" expanded="true" />
+            <element signature="e#7990#7991#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -1144,20 +1200,6 @@
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8993056">
-          <caret line="187" column="13" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2926#5653#0" expanded="true" />
-            <element signature="e#5652#5653#0" expanded="true" />
-            <element signature="e#5695#6580#0" expanded="true" />
-            <element signature="e#6579#6580#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

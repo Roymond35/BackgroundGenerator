@@ -1,6 +1,8 @@
 package net.roymond.BackgroundGenerator;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.text.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,6 +56,14 @@ public class SetupWindow {
     private JButton resetButton;
     private JPanel buttonPanel;
     private JList list1;
+    private JSlider redSlider;
+    private JSlider greenSlider;
+    private JSlider blueSlider;
+    private JSlider deltaSlider;
+    private JLabel redSliderLabel;
+    private JLabel greenSliderLabel;
+    private JLabel blueSliderLabel;
+    private JLabel deltaSliderLabel;
 
     //Actual Variables
     int imageWidth;
@@ -68,20 +78,46 @@ public class SetupWindow {
 
     public SetupWindow() {
 
+        deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
+        redSliderLabel.setText(String.valueOf(redSlider.getValue()));
+        greenSliderLabel.setText(String.valueOf(greenSlider.getValue()));
+        blueSliderLabel.setText(String.valueOf(blueSlider.getValue()));
+
         PlainDocument widthDoc = (PlainDocument) widthField.getDocument();
         widthDoc.setDocumentFilter(new MyIntFilter());
         PlainDocument heightDoc = (PlainDocument) heightField.getDocument();
         heightDoc.setDocumentFilter(new MyIntFilter());
-        PlainDocument redDoc = (PlainDocument) baseRedValue.getDocument();
-        redDoc.setDocumentFilter(new MyIntFilter());
-        PlainDocument greenDoc = (PlainDocument) baseGreenValue.getDocument();
-        greenDoc.setDocumentFilter(new MyIntFilter());
-        PlainDocument blueDoc = (PlainDocument) baseBlueValue.getDocument();
-        blueDoc.setDocumentFilter(new MyIntFilter());
-        PlainDocument deltaDoc = (PlainDocument) deltaValue.getDocument();
-        deltaDoc.setDocumentFilter(new MyIntFilter());
         PlainDocument numberRunsDoc = (PlainDocument) numberOfRuns.getDocument();
         numberRunsDoc.setDocumentFilter(new MyIntFilter());
+
+        redSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                redSlider.setToolTipText(String.valueOf(redSlider.getValue()));
+                redSliderLabel.setText(String.valueOf(redSlider.getValue()));
+            }
+        });
+        greenSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                greenSlider.setToolTipText(String.valueOf(greenSlider.getValue()));
+                greenSliderLabel.setText(String.valueOf(greenSlider.getValue()));
+            }
+        });
+        blueSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                blueSlider.setToolTipText(String.valueOf(blueSlider.getValue()));
+                blueSliderLabel.setText(String.valueOf(blueSlider.getValue()));
+            }
+        });
+        deltaSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                deltaSlider.setToolTipText(String.valueOf(deltaSlider.getValue()));
+                deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
+            }
+        });
 
         generateButton.addActionListener(new ActionListener() {
             @Override
@@ -95,9 +131,9 @@ public class SetupWindow {
                     if (!widthField.getText().equals("")) {  gen.setWidth(Integer.valueOf(widthField.getText())); }
                     if (!heightField.getText().equals("")) {  gen.setHeight(Integer.valueOf(heightField.getText()));  }
 
-                    gen.setRed(checkColor(baseRedValue));
-                    gen.setGreen(checkColor(baseGreenValue));
-                    gen.setBlue(checkColor(baseBlueValue));
+                    gen.setRed(redSlider.getValue());
+                    gen.setGreen(greenSlider.getValue());
+                    gen.setBlue(blueSlider.getValue());
 
                     if (!heightField.getText().equals("")){
                         float delta = Float.valueOf(deltaValue.getText());
