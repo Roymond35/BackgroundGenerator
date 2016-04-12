@@ -292,7 +292,7 @@ public class SetupWindow {
                 super.remove(fb, offset, length);
                 errorText.setText("");
             } else {
-                errorText.setText("You can only add numbers");
+                errorText.setText("You can only add numbers.");
             }
 
         }
