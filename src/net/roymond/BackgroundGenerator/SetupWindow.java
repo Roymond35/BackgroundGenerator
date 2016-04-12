@@ -170,6 +170,10 @@ public class SetupWindow {
                     if(!numberOfRuns.getText().equals("")){
                         errorText.setText("");
                         int num = Integer.valueOf(numberOfRuns.getText());
+                        if (num > 20){
+                            num = 20;
+                            numberOfRuns.setText("20");
+                        }
                         for (int i = 0; i < num; i++){
                             generator.generateBackground();
                         }
@@ -193,10 +197,6 @@ public class SetupWindow {
             public void actionPerformed(ActionEvent e) {
                 widthField.setText("");
                 heightField.setText("");
-                baseRedValue.setText("");
-                baseBlueValue.setText("");
-                baseGreenValue.setText("");
-                deltaValue.setText("");
                 freezeRed.setSelected(false);
                 freezeGreen.setSelected(false);
                 freezeBlue.setSelected(false);
@@ -227,8 +227,12 @@ public class SetupWindow {
     }
 
 
-    //Credit where Credit is due. This section was implemented by Hovercraft Full of Eels
-    // http://stackoverflow.com/questions/11093326/restricting-jtextfield-input-to-integers
+    /*Credit where Credit is due. This section was implemented by Hovercraft Full of Eels
+        http://stackoverflow.com/questions/11093326/restricting-jtextfield-input-to-integers
+        It was modified however, the test needs to check for an empty string so the user can
+        delete all the values
+    */
+
     class MyIntFilter extends DocumentFilter {
         @Override
         public void insertString(FilterBypass fb, int offset, String string,
@@ -242,11 +246,14 @@ public class SetupWindow {
             if (test(sb.toString())) {
                 super.insertString(fb, offset, string, attr);
             } else {
-                // warn the user and don't allow the insert
+                errorText.setText("You can only add numbers");
             }
         }
 
         private boolean test(String text) {
+            if (text.equals("")){
+                return true;
+            }
             try {
                 Integer.parseInt(text);
                 return true;
@@ -265,9 +272,10 @@ public class SetupWindow {
             sb.replace(offset, offset + length, text);
 
             if (test(sb.toString())) {
+                errorText.setText("");
                 super.replace(fb, offset, length, text, attrs);
             } else {
-                // warn the user and don't allow the insert
+                errorText.setText("You can only add numbers");
             }
 
         }
@@ -282,8 +290,9 @@ public class SetupWindow {
 
             if (test(sb.toString())) {
                 super.remove(fb, offset, length);
+                errorText.setText("");
             } else {
-                // warn the user and don't allow the insert
+                errorText.setText("You can only add numbers");
             }
 
         }
