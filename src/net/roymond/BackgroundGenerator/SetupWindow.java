@@ -177,8 +177,10 @@ public class SetupWindow {
                             numberOfRuns.setText("20");
                         }
                         for (int i = 0; i < num; i++){
+                            errorText.setText(String.valueOf(i) + " of " + String.valueOf(num) + " completed");
                             generator.generateBackground();
                         }
+                        errorText.setText("All Completed");
                     } else {
                         errorText.setText("The number of backgrounds has to be at least one.");
                     }
@@ -230,6 +232,7 @@ public class SetupWindow {
                 prefixValue.setText("");
                 numberOfRuns.setText("");
                 list1.clearSelection();
+                errorText.setText("");
             }
         });
     }
