@@ -6,6 +6,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.text.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 /**
  * Created by Roymond on 4/11/2016.
@@ -64,6 +65,7 @@ public class SetupWindow {
     private JLabel greenSliderLabel;
     private JLabel blueSliderLabel;
     private JLabel deltaSliderLabel;
+    private JButton browse;
 
     //Actual Variables
     int imageWidth;
@@ -189,6 +191,26 @@ public class SetupWindow {
                 }
 
 
+            }
+        });
+
+        browse.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser exportDirChooser = new JFileChooser();
+                exportDirChooser.setCurrentDirectory(new File("."));
+                exportDirChooser.setDialogTitle("Select an export directory");
+                exportDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                exportDirChooser.setAcceptAllFileFilterUsed(false);
+                int returnVal = exportDirChooser.showOpenDialog(SetupWindow);
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+
+                    String exportPath = exportDirChooser.getSelectedFile().getAbsolutePath();
+                    exportDirValue.setText(exportPath);
+
+                    System.out.println("You chose to open this file: " +
+                            exportDirChooser.getSelectedFile().getName());
+                }
             }
         });
 
