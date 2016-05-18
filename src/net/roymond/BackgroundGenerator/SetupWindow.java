@@ -137,14 +137,8 @@ public class SetupWindow {
                     gen.setGreen(greenSlider.getValue());
                     gen.setBlue(blueSlider.getValue());
 
-                    if (!heightField.getText().equals("")){
-                        float delta = Float.valueOf(deltaValue.getText());
-                        if (delta > 100){
-                            delta = 100;
-                            deltaValue.setText(String.valueOf(delta));
-                        }
-                        gen.setDelta(delta);
-                    }
+                    gen.setDelta(deltaSlider.getValue());
+
 
                     gen.setCircles(turnOnCircles.isSelected());
                     gen.setSquares(turnOnSquares.isSelected());
