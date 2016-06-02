@@ -114,7 +114,7 @@ public class SetupWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
+                    errorText.setText(" ");
                     Generator.Builder gen = new Generator.Builder();
 
 
@@ -215,7 +215,6 @@ public class SetupWindow {
                 prefixValue.setText("");
                 numberOfRuns.setText("");
                 list1.clearSelection();
-                errorText.setText("");
             }
         });
     }

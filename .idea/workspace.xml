@@ -43,8 +43,8 @@
       <file leaf-file-name="SetupWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5783866">
-              <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.51141554">
+              <caret line="116" column="43" selection-start-line="116" selection-start-column="43" selection-end-line="116" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2964#3250#0" expanded="true" />
@@ -55,12 +55,12 @@
                 <element signature="e#3913#3914#0" expanded="true" />
                 <element signature="e#3955#4248#0" expanded="true" />
                 <element signature="e#4247#4248#0" expanded="true" />
-                <element signature="e#4293#6948#0" expanded="true" />
-                <element signature="e#6947#6948#0" expanded="true" />
-                <element signature="e#6985#7939#0" expanded="true" />
-                <element signature="e#7938#7939#0" expanded="true" />
-                <element signature="e#7981#8776#0" expanded="true" />
-                <element signature="e#8775#8776#0" expanded="true" />
+                <element signature="e#4293#6991#0" expanded="true" />
+                <element signature="e#6990#6991#0" expanded="true" />
+                <element signature="e#7028#7982#0" expanded="true" />
+                <element signature="e#7981#7982#0" expanded="true" />
+                <element signature="e#8024#8780#0" expanded="true" />
+                <element signature="e#8779#8780#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -523,7 +523,13 @@
       <option name="project" value="LOCAL" />
       <updated>1464882099991</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Adding all of the JFrame variables that, while not being needed in my actual program, are needed to create the window. In other words, Intellij incorrectly flagged these as unused variables and I got caught not testing my changes.&#10;&#10;Bad Roy.">
+      <created>1464882454393</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1464882454393</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -610,7 +616,8 @@
     <MESSAGE value="Starting to try to get a message to show when it is in progress." />
     <MESSAGE value="Committing a fix. The issue was that when the user entered a value to the height height, no backgrounds would be generated." />
     <MESSAGE value="Making some UI Changes. This resolves the issue with the window expanding depending on how the user selects things." />
-    <option name="LAST_COMMIT_MESSAGE" value="Making some UI Changes. This resolves the issue with the window expanding depending on how the user selects things." />
+    <MESSAGE value="Adding all of the JFrame variables that, while not being needed in my actual program, are needed to create the window. In other words, Intellij incorrectly flagged these as unused variables and I got caught not testing my changes.&#10;&#10;Bad Roy." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding all of the JFrame variables that, while not being needed in my actual program, are needed to create the window. In other words, Intellij incorrectly flagged these as unused variables and I got caught not testing my changes.&#10;&#10;Bad Roy." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -667,12 +674,12 @@
             <element signature="e#3913#3914#0" expanded="true" />
             <element signature="e#3955#4248#0" expanded="true" />
             <element signature="e#4247#4248#0" expanded="true" />
-            <element signature="e#4293#6948#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#6985#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7981#8776#0" expanded="true" />
-            <element signature="e#8775#8776#0" expanded="true" />
+            <element signature="e#4293#6991#0" expanded="true" />
+            <element signature="e#6990#6991#0" expanded="true" />
+            <element signature="e#7028#7982#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8024#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -737,12 +744,12 @@
             <element signature="e#3913#3914#0" expanded="true" />
             <element signature="e#3955#4248#0" expanded="true" />
             <element signature="e#4247#4248#0" expanded="true" />
-            <element signature="e#4293#6948#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#6985#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7981#8776#0" expanded="true" />
-            <element signature="e#8775#8776#0" expanded="true" />
+            <element signature="e#4293#6991#0" expanded="true" />
+            <element signature="e#6990#6991#0" expanded="true" />
+            <element signature="e#7028#7982#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8024#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -807,12 +814,12 @@
             <element signature="e#3913#3914#0" expanded="true" />
             <element signature="e#3955#4248#0" expanded="true" />
             <element signature="e#4247#4248#0" expanded="true" />
-            <element signature="e#4293#6948#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#6985#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7981#8776#0" expanded="true" />
-            <element signature="e#8775#8776#0" expanded="true" />
+            <element signature="e#4293#6991#0" expanded="true" />
+            <element signature="e#6990#6991#0" expanded="true" />
+            <element signature="e#7028#7982#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8024#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -877,12 +884,12 @@
             <element signature="e#3913#3914#0" expanded="true" />
             <element signature="e#3955#4248#0" expanded="true" />
             <element signature="e#4247#4248#0" expanded="true" />
-            <element signature="e#4293#6948#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#6985#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7981#8776#0" expanded="true" />
-            <element signature="e#8775#8776#0" expanded="true" />
+            <element signature="e#4293#6991#0" expanded="true" />
+            <element signature="e#6990#6991#0" expanded="true" />
+            <element signature="e#7028#7982#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8024#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -955,12 +962,12 @@
             <element signature="e#3913#3914#0" expanded="true" />
             <element signature="e#3955#4248#0" expanded="true" />
             <element signature="e#4247#4248#0" expanded="true" />
-            <element signature="e#4293#6948#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#6985#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7981#8776#0" expanded="true" />
-            <element signature="e#8775#8776#0" expanded="true" />
+            <element signature="e#4293#6991#0" expanded="true" />
+            <element signature="e#6990#6991#0" expanded="true" />
+            <element signature="e#7028#7982#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8024#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1001,12 +1008,12 @@
             <element signature="e#3913#3914#0" expanded="true" />
             <element signature="e#3955#4248#0" expanded="true" />
             <element signature="e#4247#4248#0" expanded="true" />
-            <element signature="e#4293#6948#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#6985#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7981#8776#0" expanded="true" />
-            <element signature="e#8775#8776#0" expanded="true" />
+            <element signature="e#4293#6991#0" expanded="true" />
+            <element signature="e#6990#6991#0" expanded="true" />
+            <element signature="e#7028#7982#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8024#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1055,12 +1062,12 @@
             <element signature="e#3913#3914#0" expanded="true" />
             <element signature="e#3955#4248#0" expanded="true" />
             <element signature="e#4247#4248#0" expanded="true" />
-            <element signature="e#4293#6948#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#6985#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7981#8776#0" expanded="true" />
-            <element signature="e#8775#8776#0" expanded="true" />
+            <element signature="e#4293#6991#0" expanded="true" />
+            <element signature="e#6990#6991#0" expanded="true" />
+            <element signature="e#7028#7982#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8024#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1109,12 +1116,12 @@
             <element signature="e#3913#3914#0" expanded="true" />
             <element signature="e#3955#4248#0" expanded="true" />
             <element signature="e#4247#4248#0" expanded="true" />
-            <element signature="e#4293#6948#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#6985#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7981#8776#0" expanded="true" />
-            <element signature="e#8775#8776#0" expanded="true" />
+            <element signature="e#4293#6991#0" expanded="true" />
+            <element signature="e#6990#6991#0" expanded="true" />
+            <element signature="e#7028#7982#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8024#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1222,8 +1229,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5783866">
-          <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.51141554">
+          <caret line="116" column="43" selection-start-line="116" selection-start-column="43" selection-end-line="116" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2964#3250#0" expanded="true" />
@@ -1234,12 +1241,12 @@
             <element signature="e#3913#3914#0" expanded="true" />
             <element signature="e#3955#4248#0" expanded="true" />
             <element signature="e#4247#4248#0" expanded="true" />
-            <element signature="e#4293#6948#0" expanded="true" />
-            <element signature="e#6947#6948#0" expanded="true" />
-            <element signature="e#6985#7939#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7981#8776#0" expanded="true" />
-            <element signature="e#8775#8776#0" expanded="true" />
+            <element signature="e#4293#6991#0" expanded="true" />
+            <element signature="e#6990#6991#0" expanded="true" />
+            <element signature="e#7028#7982#0" expanded="true" />
+            <element signature="e#7981#7982#0" expanded="true" />
+            <element signature="e#8024#8780#0" expanded="true" />
+            <element signature="e#8779#8780#0" expanded="true" />
           </folding>
         </state>
       </provider>
