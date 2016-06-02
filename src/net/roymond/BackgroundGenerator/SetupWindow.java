@@ -79,11 +79,11 @@ public class SetupWindow {
 
 
     public SetupWindow() {
-
-        deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
-        redSliderLabel.setText(String.valueOf(redSlider.getValue()));
-        greenSliderLabel.setText(String.valueOf(greenSlider.getValue()));
-        blueSliderLabel.setText(String.valueOf(blueSlider.getValue()));
+        errorText.setText(" ");
+        deltaSliderLabel.setText(String.format("%03d",deltaSlider.getValue()));
+        redSliderLabel.setText(String.format("%03d",redSlider.getValue()));
+        greenSliderLabel.setText(String.format("%03d",greenSlider.getValue()));
+        blueSliderLabel.setText(String.format("%03d",blueSlider.getValue()));
 
         PlainDocument widthDoc = (PlainDocument) widthField.getDocument();
         widthDoc.setDocumentFilter(new MyIntFilter());
@@ -96,35 +96,34 @@ public class SetupWindow {
             @Override
             public void stateChanged(ChangeEvent e) {
                 redSlider.setToolTipText(String.valueOf(redSlider.getValue()));
-                redSliderLabel.setText(String.valueOf(redSlider.getValue()));
+                redSliderLabel.setText(String.format("%03d",redSlider.getValue()));
             }
         });
         greenSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 greenSlider.setToolTipText(String.valueOf(greenSlider.getValue()));
-                greenSliderLabel.setText(String.valueOf(greenSlider.getValue()));
+                greenSliderLabel.setText(String.format("%03d",greenSlider.getValue()));
             }
         });
         blueSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 blueSlider.setToolTipText(String.valueOf(blueSlider.getValue()));
-                blueSliderLabel.setText(String.valueOf(blueSlider.getValue()));
+                blueSliderLabel.setText(String.format("%3d",blueSlider.getValue()));
             }
         });
         deltaSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 deltaSlider.setToolTipText(String.valueOf(deltaSlider.getValue()));
-                deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
+                deltaSliderLabel.setText(String.format("%3d",deltaSlider.getValue()));
             }
         });
 
         generateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("I was touched... I'm excited");
                 try {
 
                     Generator.Builder gen = new Generator.Builder();
@@ -213,6 +212,7 @@ public class SetupWindow {
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                errorText.setText(" ");
                 widthField.setText("");
                 heightField.setText("");
                 freezeRed.setSelected(false);
