@@ -12,6 +12,8 @@ import java.io.File;
  * Created by Roymond on 4/11/2016.
  */
 public class SetupWindow {
+
+    //These are the parameters for the Setup Window. Not all of these are in use, but they are required for the Frame to work properly.
     static JFrame frame;
     private JPanel SetupWindow;
     private JLabel title;
@@ -67,8 +69,16 @@ public class SetupWindow {
     private JLabel numRuns;
     private JPanel buttonPanel;
 
+    /**
+     * This is the default constructor for the setup window.
+     * The program uses a builder pattern to establish all the variables.
+     * The ActionListener on the Generate button actually handles all the execution
+     */
     public SetupWindow() {
+
         errorText.setText(" ");
+
+        //Formatting the slider labels so they are consistent.
         deltaSliderLabel.setText(String.format("%03d",deltaSlider.getValue()));
         redSliderLabel.setText(String.format("%03d",redSlider.getValue()));
         greenSliderLabel.setText(String.format("%03d",greenSlider.getValue()));
@@ -81,6 +91,7 @@ public class SetupWindow {
         PlainDocument numberRunsDoc = (PlainDocument) numberOfRuns.getDocument();
         numberRunsDoc.setDocumentFilter(new MyIntFilter());
 
+        //Setting up all the sliders with listeners so they can update the label when the value changes.
         redSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -109,6 +120,7 @@ public class SetupWindow {
                 deltaSliderLabel.setText(String.format("%3d",deltaSlider.getValue()));
             }
         });
+
 
         generateButton.addActionListener(new ActionListener() {
             @Override
@@ -178,6 +190,7 @@ public class SetupWindow {
             }
         });
 
+        //This is the listener that will enable the user to select an export directory
         browse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -198,6 +211,7 @@ public class SetupWindow {
             }
         });
 
+        //Resets all the values
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -235,14 +249,14 @@ public class SetupWindow {
             sb.append(doc.getText(0, doc.getLength()));
             sb.insert(offset, string);
 
-            if (test(sb.toString())) {
+            if (stringTest(sb.toString())) {
                 super.insertString(fb, offset, string, attr);
             } else {
                 errorText.setText("You can only add numbers");
             }
         }
 
-        private boolean test(String text) {
+        private boolean stringTest(String text) {
             if (text.equals("")){
                 return true;
             }
@@ -263,7 +277,7 @@ public class SetupWindow {
             sb.append(doc.getText(0, doc.getLength()));
             sb.replace(offset, offset + length, text);
 
-            if (test(sb.toString())) {
+            if (stringTest(sb.toString())) {
                 errorText.setText("");
                 super.replace(fb, offset, length, text, attrs);
             } else {
@@ -280,7 +294,7 @@ public class SetupWindow {
             sb.append(doc.getText(0, doc.getLength()));
             sb.delete(offset, offset + length);
 
-            if (test(sb.toString())) {
+            if (stringTest(sb.toString())) {
                 super.remove(fb, offset, length);
                 errorText.setText("");
             } else {
