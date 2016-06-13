@@ -1,5 +1,11 @@
 package net.roymond.BackgroundGenerator;
 
+/**
+        This program was written by Roy W. Gero.
+        Last Updated: Jun 13, 2016
+        If you have questions, comments or concerns please contact him on GitHub
+*/
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;

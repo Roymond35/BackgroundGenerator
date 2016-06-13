@@ -1,4 +1,9 @@
 package net.roymond.BackgroundGenerator;
+/**
+ This program was written by Roy W. Gero.
+ Last Updated: Jun 13, 2016
+ If you have questions, comments or concerns please contact him on GitHub
+ */
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -12,6 +17,12 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class Generator {
+
+	/**
+	 * This is the builder pattern that I use to create the background images
+	 *
+	 */
+
 	
 	private static Random rand = new Random();
 	
