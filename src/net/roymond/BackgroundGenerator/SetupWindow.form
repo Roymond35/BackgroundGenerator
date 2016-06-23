@@ -48,6 +48,7 @@
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="11"/>
               <text value="Width"/>
+              <toolTipText value="The desired width of the image"/>
             </properties>
           </component>
           <component id="871e1" class="javax.swing.JLabel" binding="heightText">
@@ -61,6 +62,7 @@
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="11"/>
               <text value="Height"/>
+              <toolTipText value="The desired height of the image"/>
             </properties>
           </component>
           <component id="f9899" class="javax.swing.JTextField" binding="widthField">
@@ -69,7 +71,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <toolTipText value="The desired width of the image"/>
+            </properties>
           </component>
           <component id="5497d" class="javax.swing.JTextField" binding="heightField">
             <constraints>
@@ -77,7 +81,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <toolTipText value="The desired height of the image"/>
+            </properties>
           </component>
         </children>
       </grid>
@@ -245,6 +251,7 @@
             <properties>
               <font style="1"/>
               <text value="Desired Shapes"/>
+              <toolTipText value="The checkboxes will select which shapes you want in the image. If you don't select anything, it will be randomly chosen"/>
             </properties>
           </component>
           <component id="f318a" class="javax.swing.JCheckBox" binding="turnOnCircles">
@@ -408,6 +415,7 @@
             </constraints>
             <properties>
               <text value="Freeze Red"/>
+              <toolTipText value="If selected, the value of red will not change"/>
             </properties>
           </component>
           <component id="6e6a8" class="javax.swing.JCheckBox" binding="freezeGreen">
@@ -416,6 +424,7 @@
             </constraints>
             <properties>
               <text value="Freeze Green"/>
+              <toolTipText value="If selected, the value of green will not change"/>
             </properties>
           </component>
           <component id="75d2b" class="javax.swing.JCheckBox" binding="freezeBlue">
@@ -424,6 +433,7 @@
             </constraints>
             <properties>
               <text value="Freeze Blue"/>
+              <toolTipText value="If selected, the value of blue will not change"/>
             </properties>
           </component>
         </children>
