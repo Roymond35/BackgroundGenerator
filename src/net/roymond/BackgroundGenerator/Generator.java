@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -49,6 +50,7 @@ public class Generator {
 	private String filePrefix;
 	private String fileExtension;
 	private BufferedImage img;
+	private String alignment;
 	
 	public static class Builder {
 		
@@ -70,6 +72,7 @@ public class Generator {
 		private String filePrefix = "backgrounds_";
 		private String fileExtension = "png";
 		private BufferedImage img;
+		private String alignment;
 		
 		public Builder setCircles(boolean choice){
 			CIRCLES = choice;
@@ -225,6 +228,11 @@ public class Generator {
 			img = sourceImage;
 			return this;
 		}
+
+		public Builder setAlignment(String align){
+			alignment = align;
+			return this;
+		}
 		
 		public Generator build(){
 			while (!CIRCLES && !SQUARES && !POLYGONS && !OCTAGONS){
@@ -256,6 +264,7 @@ public class Generator {
 		exportDir = builder.exportDir;
 		fileExtension = builder.fileExtension;
 		img = builder.img;
+		alignment = builder.alignment;
 	}
 	
 	public Color chooseColor(){
@@ -391,14 +400,73 @@ public class Generator {
 		if (img != null){
 			int imgWidth = img.getWidth();
 			int imgHeight = img.getHeight();
-			int backgroundX = (int)((double)width/2 - (double)imgWidth/2);
-			int backgroundY = (int)((double)height/2 - (double)imgHeight/2);
-			graphic.drawImage(img,backgroundX, backgroundY, null);
+			if ( alignment.equals("Center") ) {
+				int backgroundX = (int) ((double) width / 2 - (double) imgWidth / 2);
+				int backgroundY = (int) ((double) height / 2 - (double) imgHeight / 2);
+				graphic.drawImage(img, backgroundX, backgroundY, null);
+			} else if ( alignment.equals("Top Left") ){
+				int backgroundX = 0;
+				int backgroundY = 0;
+				graphic.drawImage(img, backgroundX, backgroundY, null);
+			} else if ( alignment.equals("Top Center") ){
+				int backgroundX = (int) ((double) width / 2 - (double) imgWidth / 2);
+				int backgroundY = 0;
+				graphic.drawImage(img, backgroundX, backgroundY, null);
+			} else if ( alignment.equals("Top Right") ){
+				int backgroundX = width - imgWidth;
+				int backgroundY = 0;
+				graphic.drawImage(img, backgroundX, backgroundY, null);
+			} else if ( alignment.equals("Left") ){
+				int backgroundX = 0;
+				int backgroundY = (int) ((double) height / 2 - (double) imgHeight / 2);
+				graphic.drawImage(img, backgroundX, backgroundY, null);
+			} else if ( alignment.equals("Right") ){
+				int backgroundX = width - imgWidth;
+				int backgroundY = (int) ((double) height / 2 - (double) imgHeight / 2);
+				graphic.drawImage(img, backgroundX, backgroundY, null);
+			} else if ( alignment.equals("Bottom Left") ){
+				int backgroundX = 0;
+				int backgroundY = height - imgHeight;
+				graphic.drawImage(img, backgroundX, backgroundY, null);
+			} else if ( alignment.equals("Bottom Center") ){
+				int backgroundX = (int) ((double) width / 2 - (double) imgWidth / 2);
+				int backgroundY = height - imgHeight;
+				graphic.drawImage(img, backgroundX, backgroundY, null);
+			} else if ( alignment.equals("Bottom Right") ){
+				int backgroundX = width - imgWidth;
+				int backgroundY = height - imgHeight;
+				graphic.drawImage(img, backgroundX, backgroundY, null);
+			} else {
+				System.out.println("Do nothing");
+			}
+
 		}
 
 		
 		exportFile(graphic, image);
 		System.out.println("Completed");
+	}
+
+	/**
+	 * scale image
+	 *
+	 * @param sbi image to scale
+	 * @param imageType type of image
+	 * @param dWidth width of desired image
+	 * @param dHeight height of desired image
+	 * @param fWidth x-factor for transformation / scaling
+	 * @param fHeight y-factor for transformation / scaling
+	 * @return scaled image
+	 */
+	public static BufferedImage scale(BufferedImage sbi, int imageType, int dWidth, int dHeight, double fWidth, double fHeight) {
+		BufferedImage dbi = null;
+		if(sbi != null) {
+			dbi = new BufferedImage(dWidth, dHeight, imageType);
+			Graphics2D g = dbi.createGraphics();
+			AffineTransform at = AffineTransform.getScaleInstance(fWidth, fHeight);
+			g.drawRenderedImage(sbi, at);
+		}
+		return dbi;
 	}
 
 }

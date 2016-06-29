@@ -91,7 +91,7 @@ public class SetupWindow {
     private JButton thirdColor;
     private JTextField dispFilePath;
     private JCheckBox enableImage;
-    private JComboBox comboBox1;
+    private JComboBox alignment;
     private JPanel popColorTab;
 
     private BufferedImage sourceImage;
@@ -161,6 +161,7 @@ public class SetupWindow {
                     if (!heightField.getText().equals("")) {  gen.setHeight(Integer.valueOf(heightField.getText()));  }
 
                     if (enableImage.isSelected()){
+                        gen.setAlignment(alignment.getSelectedItem().toString());
                         gen.enableImage(sourceImage);
                     }
 
