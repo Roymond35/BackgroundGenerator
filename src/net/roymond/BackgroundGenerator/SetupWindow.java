@@ -2,7 +2,7 @@ package net.roymond.BackgroundGenerator;
 
 /**
         This program was written by Roy W. Gero.
-        Last Updated: Jun 13, 2016
+        Last Updated: Jun 29, 2016
         If you have questions, comments or concerns please contact him on GitHub
 */
 
@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Roymond on 4/11/2016.
+ * Created by Roy Gero on 4/11/2016.
  */
 public class SetupWindow {
 
@@ -137,14 +137,14 @@ public class SetupWindow {
             @Override
             public void stateChanged(ChangeEvent e) {
                 blueSlider.setToolTipText(String.valueOf(blueSlider.getValue()));
-                blueSliderLabel.setText(String.format("%3d",blueSlider.getValue()));
+                blueSliderLabel.setText(String.format("%03d",blueSlider.getValue()));
             }
         });
         deltaSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 deltaSlider.setToolTipText(String.valueOf(deltaSlider.getValue()));
-                deltaSliderLabel.setText(String.format("%3d",deltaSlider.getValue()));
+                deltaSliderLabel.setText(String.format("%03d",deltaSlider.getValue()));
             }
         });
 
@@ -343,19 +343,25 @@ public class SetupWindow {
      * @param topColors
      */
     public void displayTopColors(Color[] topColors){
-
-
-        firstColor.setEnabled(true);
-        firstColor.setBackground(topColors[0]);
-        firstColor.setOpaque(true);
-        secondColor.setEnabled(true);
-        secondColor.setBackground(topColors[1]);
-        secondColor.setOpaque(true);
-        thirdColor.setEnabled(true);
-        thirdColor.setBackground(topColors[2]);
-        thirdColor.setOpaque(true);
-        thirdColor.setBorderPainted(false);
-
+        //We have to check each index in case there are less than three.
+        if (topColors[0] != null) {
+            firstColor.setEnabled(true);
+            firstColor.setBackground(topColors[0]);
+            firstColor.setOpaque(true);
+            firstColor.setBorderPainted(false);
+        }
+        if (topColors[1] != null) {
+            secondColor.setEnabled(true);
+            secondColor.setBackground(topColors[1]);
+            secondColor.setOpaque(true);
+            secondColor.setBorderPainted(false);
+        }
+        if (topColors[2] != null) {
+            thirdColor.setEnabled(true);
+            thirdColor.setBackground(topColors[2]);
+            thirdColor.setOpaque(true);
+            thirdColor.setBorderPainted(false);
+        }
     }
 
     /**
