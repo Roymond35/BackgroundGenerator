@@ -92,6 +92,7 @@ public class SetupWindow {
     private JTextField dispFilePath;
     private JCheckBox enableImage;
     private JComboBox comboBox1;
+    private JPanel popColorTab;
 
     private BufferedImage sourceImage;
 
@@ -275,6 +276,14 @@ public class SetupWindow {
                 prefixValue.setText("");
                 numberOfRuns.setText("");
                 list1.clearSelection();
+                filePath.setText("");
+                dispFilePath.setText("");
+                firstColor.setEnabled(false);
+                firstColor.setBackground(SetupWindow.getBackground());
+                secondColor.setEnabled(false);
+                secondColor.setBackground(SetupWindow.getBackground());
+                thirdColor.setEnabled(false);
+                thirdColor.setBackground(SetupWindow.getBackground());
             }
         });
 
@@ -282,6 +291,7 @@ public class SetupWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 filePath.setText("");
+                dispFilePath.setText("");
                 firstColor.setEnabled(false);
                 firstColor.setBackground(SetupWindow.getBackground());
                 secondColor.setEnabled(false);
@@ -337,10 +347,14 @@ public class SetupWindow {
 
         firstColor.setEnabled(true);
         firstColor.setBackground(topColors[0]);
+        firstColor.setOpaque(true);
         secondColor.setEnabled(true);
         secondColor.setBackground(topColors[1]);
+        secondColor.setOpaque(true);
         thirdColor.setEnabled(true);
         thirdColor.setBackground(topColors[2]);
+        thirdColor.setOpaque(true);
+        thirdColor.setBorderPainted(false);
 
     }
 
