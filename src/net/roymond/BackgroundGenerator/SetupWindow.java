@@ -93,6 +93,11 @@ public class SetupWindow {
     private JCheckBox enableImage;
     private JComboBox alignment;
     private JPanel popColorTab;
+    private JLabel scalingLabel;
+    private JLabel xLabel;
+    private JTextField desiredX;
+    private JLabel yLabel;
+    private JTextField textField1;
 
     private BufferedImage sourceImage;
 
