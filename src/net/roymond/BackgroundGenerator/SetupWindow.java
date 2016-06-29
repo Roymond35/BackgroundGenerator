@@ -160,6 +160,10 @@ public class SetupWindow {
                     if (!widthField.getText().equals("")) {  gen.setWidth(Integer.valueOf(widthField.getText())); }
                     if (!heightField.getText().equals("")) {  gen.setHeight(Integer.valueOf(heightField.getText()));  }
 
+                    if (enableImage.isSelected()){
+                        gen.enableImage(sourceImage);
+                    }
+
                     gen.setRed(redSlider.getValue());
                     gen.setGreen(greenSlider.getValue());
                     gen.setBlue(blueSlider.getValue());
@@ -178,6 +182,8 @@ public class SetupWindow {
 
                     gen.setExportDir(exportDirValue.getText());
                     gen.setFilePrefix(prefixValue.getText());
+
+
 
                     //Time for the export extension
                     String[] options = {"png","jpg","bmp"};

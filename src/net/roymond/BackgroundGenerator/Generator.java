@@ -48,6 +48,7 @@ public class Generator {
 	private File exportDir;
 	private String filePrefix;
 	private String fileExtension;
+	private BufferedImage img;
 	
 	public static class Builder {
 		
@@ -68,6 +69,7 @@ public class Generator {
 		private File exportDir = null;
 		private String filePrefix = "backgrounds_";
 		private String fileExtension = "png";
+		private BufferedImage img;
 		
 		public Builder setCircles(boolean choice){
 			CIRCLES = choice;
@@ -218,6 +220,11 @@ public class Generator {
 			allowBlue = !choice; // True means don't do it... false means do.
 			return this;
 		}
+
+		public Builder enableImage(BufferedImage sourceImage){
+			img = sourceImage;
+			return this;
+		}
 		
 		public Generator build(){
 			while (!CIRCLES && !SQUARES && !POLYGONS && !OCTAGONS){
@@ -248,6 +255,7 @@ public class Generator {
 		filePrefix = builder.filePrefix;
 		exportDir = builder.exportDir;
 		fileExtension = builder.fileExtension;
+		img = builder.img;
 	}
 	
 	public Color chooseColor(){
@@ -378,6 +386,14 @@ public class Generator {
 			{
 				drawPolygons(graphic);
 			}
+		}
+
+		if (img != null){
+			int imgWidth = img.getWidth();
+			int imgHeight = img.getHeight();
+			int backgroundX = (int)((double)width/2 - (double)imgWidth/2);
+			int backgroundY = (int)((double)height/2 - (double)imgHeight/2);
+			graphic.drawImage(img,backgroundX, backgroundY, null);
 		}
 
 		
