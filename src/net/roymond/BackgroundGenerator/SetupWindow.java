@@ -6,13 +6,20 @@ package net.roymond.BackgroundGenerator;
         If you have questions, comments or concerns please contact him on GitHub
 */
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Roymond on 4/11/2016.
@@ -74,6 +81,19 @@ public class SetupWindow {
     private JPanel exportManager;
     private JLabel numRuns;
     private JPanel buttonPanel;
+    private JTabbedPane extras;
+    private JTextField filePath;
+    private JButton chooseFileButton;
+    private JButton getPopColorButton;
+    private JButton resetThisTabButton;
+    private JButton firstColor;
+    private JButton secondColor;
+    private JButton thirdColor;
+    private JTextField dispFilePath;
+    private JCheckBox enableImage;
+    private JComboBox comboBox1;
+
+    private BufferedImage sourceImage;
 
     /**
      * This is the default constructor for the setup window.
@@ -196,6 +216,26 @@ public class SetupWindow {
             }
         });
 
+        chooseFileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser chooser = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "PNG and JPG Files", "png", "jpg");
+                chooser.setFileFilter(filter);
+                chooser.setAcceptAllFileFilterUsed(false);
+                int returnVal = chooser.showOpenDialog(SetupWindow);
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+
+                    filePath.setText( chooser.getSelectedFile().getAbsolutePath() );
+                    dispFilePath.setText( chooser.getSelectedFile().getAbsolutePath() );
+
+                    System.out.println("You chose to open this file: " +
+                            chooser.getSelectedFile().getName());
+                }
+            }
+        });
+
         //This is the listener that will enable the user to select an export directory
         browse.addActionListener(new ActionListener() {
             @Override
@@ -237,6 +277,145 @@ public class SetupWindow {
                 list1.clearSelection();
             }
         });
+
+        resetThisTabButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filePath.setText("");
+                firstColor.setEnabled(false);
+                firstColor.setBackground(SetupWindow.getBackground());
+                secondColor.setEnabled(false);
+                secondColor.setBackground(SetupWindow.getBackground());
+                thirdColor.setEnabled(false);
+                thirdColor.setBackground(SetupWindow.getBackground());
+
+            }
+        });
+
+        getPopColorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean success = loadImage();
+                if (success) {
+                    Color[] topColors = getTopColors(3);
+                    displayTopColors(topColors);
+                }
+            }
+        });
+
+        firstColor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setColors(firstColor.getBackground());
+            }
+        });
+
+        secondColor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setColors(secondColor.getBackground());
+            }
+        });
+
+        thirdColor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setColors(thirdColor.getBackground());
+            }
+        });
+
+    }
+
+    /**
+     * Display Top Colors
+     * ----
+     * Takes the top three colors and puts them onto the JPanel as buttons for the user to select
+     * @param topColors
+     */
+    public void displayTopColors(Color[] topColors){
+
+
+        firstColor.setEnabled(true);
+        firstColor.setBackground(topColors[0]);
+        secondColor.setEnabled(true);
+        secondColor.setBackground(topColors[1]);
+        thirdColor.setEnabled(true);
+        thirdColor.setBackground(topColors[2]);
+
+    }
+
+    /**
+     * Attempts to load the image
+     * @return
+     * Returns True if it is successful, returns false if it is not.
+     */
+    public boolean loadImage(){
+
+        sourceImage = null;
+        try {
+            if (filePath.getText() != null){
+                File file = new File(filePath.getText());
+                if (file.isFile()) {
+                    System.out.println(file.getAbsolutePath());
+                    sourceImage = ImageIO.read(file);
+                } else {
+                    filePath.setText("File not found!");
+                    dispFilePath.setText("File not found!");
+                    return false;
+                }
+                return true;
+            }
+            return false; // If the file path is empty, it isn't successful.
+
+        } catch (IOException ex){
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Gets the top x numbers
+     * @param numColors - the number of colors to return
+     * @return - An array of colors, indexed in descending order (Most Popular is 0 index).
+     */
+    public Color[] getTopColors(int numColors){
+        Color[] returnColors = new Color[numColors];
+        HashMap<Color, Integer> colorMap = new HashMap<Color, Integer>();
+        int width = sourceImage.getWidth();
+        int height = sourceImage.getHeight();
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+                Color pixelColor = new Color(sourceImage.getRGB(i,j));
+                if ( colorMap.containsKey(pixelColor) )
+                {
+                    colorMap.put(pixelColor, colorMap.get(pixelColor) + 1);
+                } else {
+                    colorMap.put(pixelColor, 1);
+                }
+            }
+        }
+        for( int c = 0; c < numColors; c++){
+            Color topColor = null;
+            int max = -1;
+            for (Map.Entry<Color, Integer> entry : colorMap.entrySet())
+            {
+                if ( max < entry.getValue() )
+                {
+                    topColor = entry.getKey();
+                    max = entry.getValue();
+                }
+            }
+            colorMap.remove(topColor);
+            returnColors[c] = topColor;
+        }
+        return returnColors;
+    }
+
+    public void setColors(Color col){
+        redSlider.setValue(col.getRed());
+        blueSlider.setValue(col.getBlue());
+        greenSlider.setValue(col.getGreen());
+
     }
 
     /*Credit where Credit is due. This section was implemented by Hovercraft Full of Eels
@@ -309,6 +488,7 @@ public class SetupWindow {
 
         }
     }
+
 
     public static void main(String[] args) {
         frame = new JFrame("SetupWindow");
