@@ -45,7 +45,7 @@ public class Generator {
 	private boolean allowBlue;
 	private float DELTA;
 	private int MAX_OBJECT_NUMBER;
-	private String exportDir;
+	private File exportDir;
 	private String filePrefix;
 	private String fileExtension;
 	
@@ -65,7 +65,7 @@ public class Generator {
 		private boolean allowBlue = true;
 		private float DELTA = 75;
 		private int MAX_OBJECT_NUMBER = 5000;
-		private String exportDir = "";
+		private File exportDir = null;
 		private String filePrefix = "backgrounds_";
 		private String fileExtension = "png";
 		
@@ -130,7 +130,7 @@ public class Generator {
 		}
 
 		public Builder setExportDir(String dir){
-			exportDir = dir;
+			exportDir = new File(dir);
 			return this;
 		}
 		
@@ -263,12 +263,14 @@ public class Generator {
 		long currentTime = System.currentTimeMillis();
 		if (fileExtension.equals("")) { fileExtension = "png"; }
 		String fileName;
-		if (exportDir.equals("")){
+		File outputFile;
+		if (exportDir == null){
 			fileName = filePrefix + "_" + String.valueOf(currentTime) + "." + fileExtension;
+			outputFile = new File(fileName);
 		} else {
-			fileName = exportDir + "\\" + filePrefix + "_" + String.valueOf(currentTime) + "." + fileExtension;
+			String ending = filePrefix + "_" + String.valueOf(currentTime) + "." + fileExtension;
+			outputFile = new File(exportDir, ending);
 		}
-		File outputFile = new File(fileName);
 		graphic.drawImage(image, null, 0, 0);
 		try {
 			ImageIO.write(image, fileExtension, outputFile);
