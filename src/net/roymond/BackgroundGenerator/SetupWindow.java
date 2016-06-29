@@ -399,12 +399,13 @@ public class SetupWindow {
         int height = sourceImage.getHeight();
         for (int i = 0; i < width; i++){
             for (int j = 0; j < height; j++){
-                Color pixelColor = new Color(sourceImage.getRGB(i,j));
-                if ( colorMap.containsKey(pixelColor) )
-                {
-                    colorMap.put(pixelColor, colorMap.get(pixelColor) + 1);
-                } else {
-                    colorMap.put(pixelColor, 1);
+                Color pixelColor = new Color(sourceImage.getRGB(i,j), true);
+                if (pixelColor.getAlpha() != 0) {
+                    if (colorMap.containsKey(pixelColor)) {
+                        colorMap.put(pixelColor, colorMap.get(pixelColor) + 1);
+                    } else {
+                        colorMap.put(pixelColor, 1);
+                    }
                 }
             }
         }
