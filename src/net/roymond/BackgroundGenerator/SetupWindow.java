@@ -97,7 +97,8 @@ public class SetupWindow {
     private JLabel xLabel;
     private JTextField desiredX;
     private JLabel yLabel;
-    private JTextField textField1;
+    private JTextField desiredY;
+    private boolean imageLoaded = false;
 
     private BufferedImage sourceImage;
 
@@ -158,6 +159,10 @@ public class SetupWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+
+                    if (filePath.getText() != null && !imageLoaded) {
+                        loadImage();
+                    }
                     errorText.setText(" ");
                     Generator.Builder gen = new Generator.Builder();
 
@@ -390,6 +395,7 @@ public class SetupWindow {
                 if (file.isFile()) {
                     System.out.println(file.getAbsolutePath());
                     sourceImage = ImageIO.read(file);
+                    imageLoaded = true;
                 } else {
                     filePath.setText("File not found!");
                     dispFilePath.setText("File not found!");
