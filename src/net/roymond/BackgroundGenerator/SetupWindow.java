@@ -2,7 +2,7 @@ package net.roymond.BackgroundGenerator;
 
 /**
         This program was written by Roy W. Gero.
-        Last Updated: Jun 29, 2016
+        Last Updated: Jul 1, 2016
         If you have questions, comments or concerns please contact him on GitHub
 */
 
