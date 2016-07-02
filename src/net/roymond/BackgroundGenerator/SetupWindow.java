@@ -124,6 +124,11 @@ public class SetupWindow {
         PlainDocument numberRunsDoc = (PlainDocument) numberOfRuns.getDocument();
         numberRunsDoc.setDocumentFilter(new MyIntFilter());
 
+        PlainDocument desiredWidthDocument = (PlainDocument) desiredX.getDocument();
+        desiredWidthDocument.setDocumentFilter(new MyIntFilter());
+        PlainDocument desiredHeightDocument = (PlainDocument) desiredY.getDocument();
+        desiredHeightDocument.setDocumentFilter(new MyIntFilter());
+
         //Setting up all the sliders with listeners so they can update the label when the value changes.
         redSlider.addChangeListener(new ChangeListener() {
             @Override
@@ -514,7 +519,7 @@ public class SetupWindow {
             sb.replace(offset, offset + length, text);
 
             if (stringTest(sb.toString())) {
-                errorText.setText("");
+                errorText.setText(" ");
                 super.replace(fb, offset, length, text, attrs);
             } else {
                 errorText.setText("You can only add numbers");
