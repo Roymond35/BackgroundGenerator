@@ -173,7 +173,19 @@ public class SetupWindow {
                     if (enableImage.isSelected()){
                         gen.setAlignment(alignment.getSelectedItem().toString());
                         gen.enableImage(sourceImage);
+                        if (!desiredX.getText().isEmpty() || !desiredY.getText().isEmpty() ){
+
+                            if (desiredX.getText().isEmpty()){
+                                gen.setDesiredDimensions(Integer.MIN_VALUE, Integer.valueOf(desiredY.getText()));
+                            } else if (desiredY.getText().isEmpty()){
+                                gen.setDesiredDimensions(Integer.valueOf(desiredX.getText()), Integer.MIN_VALUE);
+                            } else {
+                                gen.setDesiredDimensions(Integer.valueOf(desiredX.getText()), Integer.valueOf(desiredY.getText()));
+                            }
+
+                        }
                     }
+
 
                     gen.setRed(redSlider.getValue());
                     gen.setGreen(greenSlider.getValue());

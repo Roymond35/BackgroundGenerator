@@ -51,6 +51,8 @@ public class Generator {
 	private String fileExtension;
 	private BufferedImage img;
 	private String alignment;
+	private int desiredImageWidth = Integer.MIN_VALUE;
+	private int desiredImageHeight = Integer.MIN_VALUE;
 	
 	public static class Builder {
 		
@@ -73,6 +75,8 @@ public class Generator {
 		private String fileExtension = "png";
 		private BufferedImage img;
 		private String alignment;
+		private int desiredImageWidth;
+		private int desiredImageHeight;
 		
 		public Builder setCircles(boolean choice){
 			CIRCLES = choice;
@@ -229,6 +233,42 @@ public class Generator {
 			return this;
 		}
 
+		public Builder setDesiredDimensions(int desiredX, int desiredY)
+		{
+			/** The way that this works
+			 *
+			 * 	Case 1: desiredX is not set. We'll get the ratio from desiredY and apply it to desiredX.
+			 * 	Case 2: desiredY is not set. Same way as Case 1.
+			 * 	Case 3: Both are set, desiredX is smaller. desiredX will set the scaling ratio
+			 * 	Case 4: Both are set, desiredY is smaller. desiredY will set the scaling ratio
+			 * 	Case 5: Both are set and equal. Doesn't matter, the ratio will be set in the scaling function.
+			 *
+			 */
+			if( desiredX == Integer.MIN_VALUE ){
+				double ratio = (double)desiredY / img.getHeight();
+				desiredImageWidth= (int)(ratio * img.getWidth());
+				desiredImageHeight = desiredY;
+			} else if ( desiredY == Integer.MIN_VALUE) {
+				double ratio = (double)desiredX / img.getWidth();
+				desiredImageHeight = (int)(ratio * img.getHeight());
+				desiredImageWidth = desiredX;
+			} else {
+				if (desiredX < desiredY) {
+					double ratio = (double)desiredX / img.getWidth();
+					desiredImageHeight = (int)(ratio * img.getHeight());
+					desiredImageWidth = desiredX;
+				} else if (desiredY < desiredX){
+					double ratio = (double)desiredY / img.getHeight();
+					desiredImageWidth= (int)(ratio * img.getWidth());
+					desiredImageHeight = desiredY;
+				} else {
+					desiredImageWidth = desiredX;
+					desiredImageHeight = desiredY;
+				}
+			}
+			return this;
+		}
+
 		public Builder setAlignment(String align){
 			alignment = align;
 			return this;
@@ -265,6 +305,8 @@ public class Generator {
 		fileExtension = builder.fileExtension;
 		img = builder.img;
 		alignment = builder.alignment;
+		desiredImageHeight = builder.desiredImageHeight;
+		desiredImageWidth = builder.desiredImageWidth;
 	}
 	
 	public Color chooseColor(){
@@ -400,6 +442,11 @@ public class Generator {
 		if (img != null){
 			int imgWidth = img.getWidth();
 			int imgHeight = img.getHeight();
+			if ( desiredImageHeight != Integer.MIN_VALUE ){
+				img = scale( img, img.getType(), desiredImageWidth, desiredImageHeight, (double)(desiredImageWidth)/imgWidth, (double)(desiredImageHeight)/imgHeight);
+				imgHeight = desiredImageHeight;
+				imgWidth = desiredImageWidth;
+			}
 			if ( alignment.equals("Center") ) {
 				int backgroundX = (int) ((double) width / 2 - (double) imgWidth / 2);
 				int backgroundY = (int) ((double) height / 2 - (double) imgHeight / 2);
