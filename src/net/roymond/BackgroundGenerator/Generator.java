@@ -179,7 +179,7 @@ public class Generator {
 			if (value <= 100 && value >=0){
 				DELTA = value;
 			} else {
-				throw new InvalidValueException("Delta Value must be between 0 and 255"); 
+				throw new InvalidValueException("Delta Value must be between 0 and 100");
 			}
 			return this;
 		}
@@ -241,7 +241,7 @@ public class Generator {
 			 * 	Case 2: desiredY is not set. Same way as Case 1.
 			 * 	Case 3: Both are set, desiredX is smaller. desiredX will set the scaling ratio
 			 * 	Case 4: Both are set, desiredY is smaller. desiredY will set the scaling ratio
-			 * 	Case 5: Both are set and equal. Doesn't matter, the ratio will be set in the scaling function.
+			 * 	Case 5: Both are set and equal. Width will be the base for the scaling ratio.
 			 *
 			 */
 			if( desiredX == Integer.MIN_VALUE ){
@@ -262,7 +262,8 @@ public class Generator {
 					desiredImageWidth= (int)(ratio * img.getWidth());
 					desiredImageHeight = desiredY;
 				} else {
-					desiredImageWidth = desiredX;
+					double ratio = (double)desiredY / img.getHeight();
+					desiredImageWidth= (int)(ratio * img.getWidth());
 					desiredImageHeight = desiredY;
 				}
 			}
