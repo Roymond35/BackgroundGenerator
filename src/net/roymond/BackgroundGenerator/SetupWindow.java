@@ -268,6 +268,7 @@ public class SetupWindow {
                     System.out.println("You chose to open this file: " +
                             chooser.getSelectedFile().getName());
                 }
+                imageLoaded = false;
             }
         });
 

@@ -19,8 +19,8 @@ public class Main {
 		 */
 
 		int numberColors = 3;
-		float deltaValue = 20;
-		int numberOfBackgrounds = 10;
+		float deltaValue = 17;
+		int numberOfBackgrounds = 5;
 		Random rand = new Random();
 
 		try {
@@ -46,15 +46,25 @@ public class Main {
 							gen.setPolygons(rand.nextBoolean());
 							gen.setOctagons(rand.nextBoolean());
 
-							gen.freezeBlue(rand.nextBoolean());
-							gen.freezeGreen(rand.nextBoolean());
-							gen.freezeRed(rand.nextBoolean());
+							int[] colors = {topColors[i].getRed(),topColors[i].getGreen(),topColors[i].getBlue()};
+							int max = -1;
+							for (int counter = 0; counter < colors.length; counter++)
+							{
+								if (colors[counter] > max)
+								{
+									max = colors[counter];
+								}
+							}
+
+							if (topColors[i].getBlue() == max){gen.freezeBlue(rand.nextBoolean());}
+							if (topColors[i].getGreen() == max){gen.freezeGreen(rand.nextBoolean());}
+							if (topColors[i].getRed() == max){gen.freezeRed(rand.nextBoolean());}
 
 							gen.enableImage(dispImg);
 							gen.setDesiredDimensions(600, 600);
 							gen.setAlignment("Center");
 
-							gen.setExportDir("C:\\Users\\gero\\Google Drive\\NHL Backgrounds");
+							gen.setExportDir("C:\\Users\\gero\\Desktop\\NHL Backgrounds");
 
 							String pattern = Pattern.quote(System.getProperty("file.separator"));
 							String[] brokenPath = filePath.toString().split(pattern);
