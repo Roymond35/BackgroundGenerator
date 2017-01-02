@@ -457,33 +457,53 @@
                   </component>
                   <component id="a2055" class="javax.swing.JLabel" binding="redSliderLabel">
                     <constraints>
-                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <minimum-size width="45" height="-1"/>
+                        <preferred-size width="45" height="-1"/>
+                        <maximum-size width="45" height="-1"/>
+                      </grid>
                     </constraints>
                     <properties>
+                      <horizontalAlignment value="11"/>
                       <text value="Label"/>
                     </properties>
                   </component>
                   <component id="78826" class="javax.swing.JLabel" binding="greenSliderLabel">
                     <constraints>
-                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <minimum-size width="45" height="-1"/>
+                        <preferred-size width="45" height="-1"/>
+                        <maximum-size width="45" height="-1"/>
+                      </grid>
                     </constraints>
                     <properties>
+                      <horizontalAlignment value="11"/>
                       <text value="Label"/>
                     </properties>
                   </component>
                   <component id="fb257" class="javax.swing.JLabel" binding="blueSliderLabel">
                     <constraints>
-                      <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <minimum-size width="45" height="-1"/>
+                        <preferred-size width="45" height="-1"/>
+                        <maximum-size width="45" height="-1"/>
+                      </grid>
                     </constraints>
                     <properties>
+                      <horizontalAlignment value="11"/>
                       <text value="Label"/>
                     </properties>
                   </component>
                   <component id="15d70" class="javax.swing.JLabel" binding="deltaSliderLabel">
                     <constraints>
-                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <minimum-size width="45" height="-1"/>
+                        <preferred-size width="45" height="-1"/>
+                        <maximum-size width="45" height="-1"/>
+                      </grid>
                     </constraints>
                     <properties>
+                      <horizontalAlignment value="11"/>
                       <text value="Label"/>
                     </properties>
                   </component>

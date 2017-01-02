@@ -112,10 +112,10 @@ public class SetupWindow {
         errorText.setText(" ");
 
         //Formatting the slider labels so they are consistent.
-        deltaSliderLabel.setText(String.format("%03d",deltaSlider.getValue()));
-        redSliderLabel.setText(String.format("%03d",redSlider.getValue()));
-        greenSliderLabel.setText(String.format("%03d",greenSlider.getValue()));
-        blueSliderLabel.setText(String.format("%03d",blueSlider.getValue()));
+        deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
+        redSliderLabel.setText(String.valueOf(redSlider.getValue()));
+        greenSliderLabel.setText(String.valueOf(greenSlider.getValue()));
+        blueSliderLabel.setText(String.valueOf(blueSlider.getValue()));
 
         PlainDocument widthDoc = (PlainDocument) widthField.getDocument();
         widthDoc.setDocumentFilter(new MyIntFilter());
@@ -134,28 +134,28 @@ public class SetupWindow {
             @Override
             public void stateChanged(ChangeEvent e) {
                 redSlider.setToolTipText(String.valueOf(redSlider.getValue()));
-                redSliderLabel.setText(String.format("%03d",redSlider.getValue()));
+                redSliderLabel.setText(String.valueOf(redSlider.getValue()));
             }
         });
         greenSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 greenSlider.setToolTipText(String.valueOf(greenSlider.getValue()));
-                greenSliderLabel.setText(String.format("%03d",greenSlider.getValue()));
+                greenSliderLabel.setText(String.valueOf(greenSlider.getValue()));
             }
         });
         blueSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 blueSlider.setToolTipText(String.valueOf(blueSlider.getValue()));
-                blueSliderLabel.setText(String.format("%03d",blueSlider.getValue()));
+                blueSliderLabel.setText(String.valueOf(blueSlider.getValue()));
             }
         });
         deltaSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 deltaSlider.setToolTipText(String.valueOf(deltaSlider.getValue()));
-                deltaSliderLabel.setText(String.format("%03d",deltaSlider.getValue()));
+                deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
             }
         });
 
