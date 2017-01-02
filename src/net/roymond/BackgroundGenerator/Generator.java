@@ -241,7 +241,7 @@ public class Generator {
 			 * 	Case 2: desiredY is not set. Same way as Case 1.
 			 * 	Case 3: Both are set, desiredX is smaller. desiredX will set the scaling ratio
 			 * 	Case 4: Both are set, desiredY is smaller. desiredY will set the scaling ratio
-			 * 	Case 5: Both are set and equal. Width will be the base for the scaling ratiochec
+			 * 	Case 5: Both are set and equal. Width will be the base for the scaling ratio
 			 *
 			 */
 			if( desiredX == Integer.MIN_VALUE ){
