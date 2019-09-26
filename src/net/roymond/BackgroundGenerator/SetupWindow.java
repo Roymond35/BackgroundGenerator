@@ -25,28 +25,22 @@ import java.util.Map;
  * Created by Roy Gero on 4/11/2016.
  */
 public class SetupWindow {
-
-    //These are the parameters for the Setup Window. Not all of these are in use, but they are required for the Frame to work properly.
     static JFrame frame;
     private JPanel SetupWindow;
+
+    // Declaring unused properties that are needed for the frame;
+    private JLabel heightText, widthText, blueTitle, greenTitle, redTitle, deltaTitle, exportExtTitle, desiredDirTitle;
+    private JLabel imagePrefix, numRuns, scalingLabel, xLabel, yLabel;
+    private JTextField baseRedValue, baseGreenValue, baseBlueValue, deltaValue, exportExt;
+    private JPanel exportManager, buttonPanel, baseColorManager, baseColorPanel, ImagePanel, imagePositionPanel;
+    private JPanel imageProperties, optionsPanel, freezePanel, desiredShapesPanel, popColorTab, sizeManager;
+
     private JTextField widthField;
-    private JLabel heightText;
-    private JLabel widthText;
     private JTextField heightField;
-    private JTextField baseRedValue;
-    private JTextField baseGreenValue;
-    private JTextField baseBlueValue;
-    private JLabel blueTitle;
-    private JLabel greenTitle;
-    private JLabel redTitle;
-    private JPanel baseColorManager;
-    private JLabel shapesTitle;
     private JCheckBox turnOnCircles;
     private JCheckBox turnOnSquares;
     private JCheckBox turnOnPolygons;
     private JCheckBox turnOnOctagons;
-    private JPanel lockShapesPanel;
-    private JLabel freezeColorsTitle;
     private JCheckBox freezeRed;
     private JCheckBox freezeGreen;
     private JCheckBox freezeBlue;
@@ -66,42 +60,18 @@ public class SetupWindow {
     private JLabel blueSliderLabel;
     private JLabel deltaSliderLabel;
     private JButton browse;
-    private JTextField deltaValue;
-    private JLabel deltaTitle;
-    private JPanel freezeColorsPanel;
-    private JLabel exportExtTitle;
-    private JLabel imagePrefix;
-    private JLabel desiredDirTitle;
-    private JTextField exportExt;
-    private JPanel exportManager;
-    private JLabel numRuns;
-    private JPanel buttonPanel;
     private JTextField filePath;
     private JButton chooseFileButton;
     private JButton getPopColorButton;
-    private JButton resetThisTabButton;
     private JButton firstColor;
     private JButton secondColor;
     private JButton thirdColor;
-    private JTextField dispFilePath;
     private JCheckBox enableImage;
     private JComboBox alignment;
-    private JPanel popColorTab;
-    private JLabel scalingLabel;
-    private JLabel xLabel;
     private JTextField desiredX;
-    private JLabel yLabel;
     private JTextField desiredY;
-    private JPanel sizeManager;
     private JButton selectedColor;
-    private JPanel baseColorPanel;
-    private JPanel ImagePanel;
-    private JCheckBox loadImageCheckbox;
-    private JPanel imagePositionPanel;
-    private JPanel imageProperties;
-    private JPanel optionsPanel;
     private boolean imageLoaded = false;
-
     private BufferedImage sourceImage;
 
     /**
@@ -114,12 +84,10 @@ public class SetupWindow {
         errorText.setText(" ");
 
         // Hiding objects that aren't needed immediately
-        imageProperties.setVisible(false);
         firstColor.setVisible(false);
         secondColor.setVisible(false);
         thirdColor.setVisible(false);
-
-        loadImageCheckbox.addChangeListener(e -> imageProperties.setVisible(loadImageCheckbox.isSelected()));
+        getPopColorButton.setEnabled(false);
 
         //Formatting the slider labels so they are consistent.
         deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
@@ -138,6 +106,7 @@ public class SetupWindow {
         desiredWidthDocument.setDocumentFilter(new MyIntFilter());
         PlainDocument desiredHeightDocument = (PlainDocument) desiredY.getDocument();
         desiredHeightDocument.setDocumentFilter(new MyIntFilter());
+
 
         //Setting up all the sliders with listeners so they can update the label when the value changes.
         redSlider.addChangeListener(e -> {
@@ -164,12 +133,10 @@ public class SetupWindow {
         generateButton.addActionListener(e -> {
             try {
 
-                if (filePath.getText() != null && !imageLoaded) {
+                if (filePath.getText() != null || filePath.getText().isEmpty() && !imageLoaded) {
                     loadImage();
                 }
-                errorText.setText(" ");
                 Generator.Builder gen = new Generator.Builder();
-
 
                 if (!widthField.getText().equals("")) {  gen.setWidth(Integer.valueOf(widthField.getText())); }
                 if (!heightField.getText().equals("")) {  gen.setHeight(Integer.valueOf(heightField.getText()));  }
@@ -259,8 +226,6 @@ public class SetupWindow {
             if(returnVal == JFileChooser.APPROVE_OPTION) {
 
                 filePath.setText( chooser.getSelectedFile().getAbsolutePath() );
-                dispFilePath.setText( chooser.getSelectedFile().getAbsolutePath() );
-
                 System.out.println("You chose to open this file: " +
                         chooser.getSelectedFile().getName());
             }
@@ -302,7 +267,6 @@ public class SetupWindow {
             numberOfRuns.setText("");
             extensionList.clearSelection();
             filePath.setText("");
-            dispFilePath.setText("");
             firstColor.setVisible(false);
             firstColor.setEnabled(false);
             firstColor.setBackground(SetupWindow.getBackground());
@@ -312,6 +276,7 @@ public class SetupWindow {
             thirdColor.setVisible(false);
             thirdColor.setEnabled(false);
             thirdColor.setBackground(SetupWindow.getBackground());
+            getPopColorButton.setEnabled(false);
         });
 
         getPopColorButton.addActionListener(e -> {
@@ -387,10 +352,10 @@ public class SetupWindow {
                     sourceImage = ImageIO.read(file);
                     imageLoaded = true;
                 } else {
-                    filePath.setText("File not found!");
-                    dispFilePath.setText("File not found!");
+                    filePath.setText("File not loaded!");
                     return false;
                 }
+                getPopColorButton.setEnabled(true);
                 return true;
             }
             return false; // If the file path is empty, it isn't successful.

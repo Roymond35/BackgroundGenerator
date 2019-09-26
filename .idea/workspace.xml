@@ -6,8 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be0c2440-2831-4463-9333-519f55f1e922" name="Default" comment="Starting the restructuring of the UI.">
+    <list default="true" id="be0c2440-2831-4463-9333-519f55f1e922" name="Default" comment="More UI restructuring and starting to refactor the Java file so it can be read easier.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Generator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java" afterDir="false" />
     </list>
@@ -54,6 +55,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -398,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1467825461714</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Starting the restructuring of the UI.">
+      <created>1569517438764</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1569517438765</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -446,14 +455,15 @@
     <MESSAGE value="Merging the addImages branch to the trunk." />
     <MESSAGE value="Fixed the aspect ratio with the previous commit, but messed up the commit message." />
     <MESSAGE value="Starting the restructuring of the UI." />
-    <option name="LAST_COMMIT_MESSAGE" value="Starting the restructuring of the UI." />
+    <MESSAGE value="More UI restructuring and starting to refactor the Java file so it can be read easier." />
+    <option name="LAST_COMMIT_MESSAGE" value="More UI restructuring and starting to refactor the Java file so it can be read easier." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Generator.java</url>
-          <line>390</line>
+          <line>393</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

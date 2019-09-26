@@ -324,11 +324,14 @@ public class Generator {
 		if (fileExtension.equals("")) { fileExtension = "png"; }
 		String fileName;
 		File outputFile;
+		if (!filePrefix.isEmpty()){
+			filePrefix = filePrefix + "_";
+		}
 		if (exportDir == null){
-			fileName = filePrefix + "_" + String.valueOf(currentTime) + "." + fileExtension;
+			fileName = filePrefix + String.valueOf(currentTime) + "." + fileExtension;
 			outputFile = new File(fileName);
 		} else {
-			String ending = filePrefix + "_" + String.valueOf(currentTime) + "." + fileExtension;
+			String ending = filePrefix + String.valueOf(currentTime) + "." + fileExtension;
 			outputFile = new File(exportDir, ending);
 		}
 		graphic.drawImage(image, null, 0, 0);
