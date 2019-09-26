@@ -29,14 +29,10 @@ public class SetupWindow {
     //These are the parameters for the Setup Window. Not all of these are in use, but they are required for the Frame to work properly.
     static JFrame frame;
     private JPanel SetupWindow;
-    private JLabel title;
-    private JPanel sizeManager;
-    private JLabel sizeTitle;
     private JTextField widthField;
     private JLabel heightText;
     private JLabel widthText;
     private JTextField heightField;
-    private JLabel baseColor;
     private JTextField baseRedValue;
     private JTextField baseGreenValue;
     private JTextField baseBlueValue;
@@ -60,7 +56,7 @@ public class SetupWindow {
     private JTextField numberOfRuns;
     private JLabel errorText;
     private JButton resetButton;
-    private JList list1;
+    private JList extensionList;
     private JSlider redSlider;
     private JSlider greenSlider;
     private JSlider blueSlider;
@@ -73,7 +69,6 @@ public class SetupWindow {
     private JTextField deltaValue;
     private JLabel deltaTitle;
     private JPanel freezeColorsPanel;
-    private JLabel exportTitle;
     private JLabel exportExtTitle;
     private JLabel imagePrefix;
     private JLabel desiredDirTitle;
@@ -81,7 +76,6 @@ public class SetupWindow {
     private JPanel exportManager;
     private JLabel numRuns;
     private JPanel buttonPanel;
-    private JTabbedPane extras;
     private JTextField filePath;
     private JButton chooseFileButton;
     private JButton getPopColorButton;
@@ -98,6 +92,14 @@ public class SetupWindow {
     private JTextField desiredX;
     private JLabel yLabel;
     private JTextField desiredY;
+    private JPanel sizeManager;
+    private JButton selectedColor;
+    private JPanel baseColorPanel;
+    private JPanel ImagePanel;
+    private JCheckBox loadImageCheckbox;
+    private JPanel imagePositionPanel;
+    private JPanel imageProperties;
+    private JPanel optionsPanel;
     private boolean imageLoaded = false;
 
     private BufferedImage sourceImage;
@@ -110,6 +112,14 @@ public class SetupWindow {
     public SetupWindow() {
 
         errorText.setText(" ");
+
+        // Hiding objects that aren't needed immediately
+        imageProperties.setVisible(false);
+        firstColor.setVisible(false);
+        secondColor.setVisible(false);
+        thirdColor.setVisible(false);
+
+        loadImageCheckbox.addChangeListener(e -> imageProperties.setVisible(loadImageCheckbox.isSelected()));
 
         //Formatting the slider labels so they are consistent.
         deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
@@ -130,244 +140,193 @@ public class SetupWindow {
         desiredHeightDocument.setDocumentFilter(new MyIntFilter());
 
         //Setting up all the sliders with listeners so they can update the label when the value changes.
-        redSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                redSlider.setToolTipText(String.valueOf(redSlider.getValue()));
-                redSliderLabel.setText(String.valueOf(redSlider.getValue()));
-            }
+        redSlider.addChangeListener(e -> {
+            redSlider.setToolTipText(String.valueOf(redSlider.getValue()));
+            redSliderLabel.setText(String.valueOf(redSlider.getValue()));
+            updatePreviewColor();
         });
-        greenSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                greenSlider.setToolTipText(String.valueOf(greenSlider.getValue()));
-                greenSliderLabel.setText(String.valueOf(greenSlider.getValue()));
-            }
+        greenSlider.addChangeListener(e -> {
+            greenSlider.setToolTipText(String.valueOf(greenSlider.getValue()));
+            greenSliderLabel.setText(String.valueOf(greenSlider.getValue()));
+            updatePreviewColor();
         });
-        blueSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                blueSlider.setToolTipText(String.valueOf(blueSlider.getValue()));
-                blueSliderLabel.setText(String.valueOf(blueSlider.getValue()));
-            }
+        blueSlider.addChangeListener(e -> {
+            blueSlider.setToolTipText(String.valueOf(blueSlider.getValue()));
+            blueSliderLabel.setText(String.valueOf(blueSlider.getValue()));
+            updatePreviewColor();
         });
-        deltaSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                deltaSlider.setToolTipText(String.valueOf(deltaSlider.getValue()));
-                deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
-            }
+        deltaSlider.addChangeListener(e -> {
+            deltaSlider.setToolTipText(String.valueOf(deltaSlider.getValue()));
+            deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
         });
 
 
-        generateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
+        generateButton.addActionListener(e -> {
+            try {
 
-                    if (filePath.getText() != null && !imageLoaded) {
-                        loadImage();
-                    }
-                    errorText.setText(" ");
-                    Generator.Builder gen = new Generator.Builder();
+                if (filePath.getText() != null && !imageLoaded) {
+                    loadImage();
+                }
+                errorText.setText(" ");
+                Generator.Builder gen = new Generator.Builder();
 
 
-                    if (!widthField.getText().equals("")) {  gen.setWidth(Integer.valueOf(widthField.getText())); }
-                    if (!heightField.getText().equals("")) {  gen.setHeight(Integer.valueOf(heightField.getText()));  }
+                if (!widthField.getText().equals("")) {  gen.setWidth(Integer.valueOf(widthField.getText())); }
+                if (!heightField.getText().equals("")) {  gen.setHeight(Integer.valueOf(heightField.getText()));  }
 
-                    if (enableImage.isSelected()){
-                        gen.setAlignment(alignment.getSelectedItem().toString());
-                        gen.enableImage(sourceImage);
-                        if (!desiredX.getText().isEmpty() || !desiredY.getText().isEmpty() ){
+                if (enableImage.isSelected()){
+                    gen.setAlignment(alignment.getSelectedItem().toString());
+                    gen.enableImage(sourceImage);
+                    if (!desiredX.getText().isEmpty() || !desiredY.getText().isEmpty() ){
 
-                            if (desiredX.getText().isEmpty()){
-                                gen.setDesiredDimensions(Integer.MIN_VALUE, Integer.valueOf(desiredY.getText()));
-                            } else if (desiredY.getText().isEmpty()){
-                                gen.setDesiredDimensions(Integer.valueOf(desiredX.getText()), Integer.MIN_VALUE);
-                            } else {
-                                gen.setDesiredDimensions(Integer.valueOf(desiredX.getText()), Integer.valueOf(desiredY.getText()));
-                            }
-
+                        if (desiredX.getText().isEmpty()){
+                            gen.setDesiredDimensions(Integer.MIN_VALUE, Integer.valueOf(desiredY.getText()));
+                        } else if (desiredY.getText().isEmpty()){
+                            gen.setDesiredDimensions(Integer.valueOf(desiredX.getText()), Integer.MIN_VALUE);
+                        } else {
+                            gen.setDesiredDimensions(Integer.valueOf(desiredX.getText()), Integer.valueOf(desiredY.getText()));
                         }
+
                     }
-
-
-                    gen.setRed(redSlider.getValue());
-                    gen.setGreen(greenSlider.getValue());
-                    gen.setBlue(blueSlider.getValue());
-
-                    gen.setDelta(deltaSlider.getValue());
-
-
-                    gen.setCircles(turnOnCircles.isSelected());
-                    gen.setSquares(turnOnSquares.isSelected());
-                    gen.setOctagons(turnOnOctagons.isSelected());
-                    gen.setPolygons(turnOnPolygons.isSelected());
-
-                    gen.freezeRed(freezeRed.isSelected());
-                    gen.freezeGreen(freezeGreen.isSelected());
-                    gen.freezeBlue(freezeBlue.isSelected());
-
-                    gen.setExportDir(exportDirValue.getText());
-                    gen.setFilePrefix(prefixValue.getText());
-
-
-
-                    //Time for the export extension
-                    String[] options = {"png","jpg","bmp"};
-                    if (list1.isSelectionEmpty()){
-                        gen.setExtension("png");
-                    } else {
-                        String option = options[list1.getSelectedIndex()];
-                        gen.setExtension(option);
-                    }
-
-                    Generator generator = gen.build();
-
-                    if(!numberOfRuns.getText().equals("")){
-                        errorText.setText("");
-                        int num = Integer.valueOf(numberOfRuns.getText());
-                        if (num > 20){
-                            num = 20;
-                            numberOfRuns.setText("20");
-                        }
-                        for (int i = 0; i < num; i++){
-                            errorText.setText(String.valueOf(i) + " of " + String.valueOf(num) + " completed");
-                            generator.generateBackground();
-                        }
-                        errorText.setText("All Completed");
-                    } else {
-                        errorText.setText("The number of backgrounds has to be at least one.");
-                    }
-
-
-
-                } catch (Exception T){
-                    System.out.println("Error");
-                    T.printStackTrace();
                 }
 
 
+                gen.setRed(redSlider.getValue());
+                gen.setGreen(greenSlider.getValue());
+                gen.setBlue(blueSlider.getValue());
+
+                gen.setDelta(deltaSlider.getValue());
+
+
+                gen.setCircles(turnOnCircles.isSelected());
+                gen.setSquares(turnOnSquares.isSelected());
+                gen.setOctagons(turnOnOctagons.isSelected());
+                gen.setPolygons(turnOnPolygons.isSelected());
+
+                gen.freezeRed(freezeRed.isSelected());
+                gen.freezeGreen(freezeGreen.isSelected());
+                gen.freezeBlue(freezeBlue.isSelected());
+
+                gen.setExportDir(exportDirValue.getText());
+                gen.setFilePrefix(prefixValue.getText());
+
+
+
+                //Time for the export extension
+                String[] options = {"png","jpg","bmp"};
+                if (extensionList.isSelectionEmpty()){
+                    gen.setExtension("png");
+                } else {
+                    String option = options[extensionList.getSelectedIndex()];
+                    gen.setExtension(option);
+                }
+
+                Generator generator = gen.build();
+
+                if(!numberOfRuns.getText().equals("")){
+                    errorText.setText("");
+                    int num = Integer.valueOf(numberOfRuns.getText());
+                    if (num > 20){
+                        num = 20;
+                        numberOfRuns.setText("20");
+                    }
+                    for (int i = 0; i < num; i++){
+                        errorText.setText(String.valueOf(i) + " of " + String.valueOf(num) + " completed");
+                        generator.generateBackground();
+                    }
+                    errorText.setText("All Completed");
+                } else {
+                    errorText.setText("The number of backgrounds has to be at least one.");
+                }
+
+
+
+            } catch (Exception T){
+                System.out.println("Error");
+                T.printStackTrace();
             }
+
+
         });
 
-        chooseFileButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser chooser = new JFileChooser();
-                FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                        "PNG and JPG Files", "png", "jpg");
-                chooser.setFileFilter(filter);
-                chooser.setAcceptAllFileFilterUsed(false);
-                int returnVal = chooser.showOpenDialog(SetupWindow);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
+        chooseFileButton.addActionListener(e -> {
+            JFileChooser chooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "PNG and JPG Files", "png", "jpg");
+            chooser.setFileFilter(filter);
+            chooser.setAcceptAllFileFilterUsed(false);
+            int returnVal = chooser.showOpenDialog(SetupWindow);
+            if(returnVal == JFileChooser.APPROVE_OPTION) {
 
-                    filePath.setText( chooser.getSelectedFile().getAbsolutePath() );
-                    dispFilePath.setText( chooser.getSelectedFile().getAbsolutePath() );
+                filePath.setText( chooser.getSelectedFile().getAbsolutePath() );
+                dispFilePath.setText( chooser.getSelectedFile().getAbsolutePath() );
 
-                    System.out.println("You chose to open this file: " +
-                            chooser.getSelectedFile().getName());
-                }
-                imageLoaded = false;
+                System.out.println("You chose to open this file: " +
+                        chooser.getSelectedFile().getName());
             }
+            imageLoaded = false;
         });
 
         //This is the listener that will enable the user to select an export directory
-        browse.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser exportDirChooser = new JFileChooser();
-                exportDirChooser.setCurrentDirectory(new File("."));
-                exportDirChooser.setDialogTitle("Select an export directory");
-                exportDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                exportDirChooser.setAcceptAllFileFilterUsed(false);
-                int returnVal = exportDirChooser.showOpenDialog(SetupWindow);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
+        browse.addActionListener(e -> {
+            JFileChooser exportDirChooser = new JFileChooser();
+            exportDirChooser.setCurrentDirectory(new File("."));
+            exportDirChooser.setDialogTitle("Select an export directory");
+            exportDirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            exportDirChooser.setAcceptAllFileFilterUsed(false);
+            int returnVal = exportDirChooser.showOpenDialog(SetupWindow);
+            if(returnVal == JFileChooser.APPROVE_OPTION) {
 
-                    String exportPath = exportDirChooser.getSelectedFile().getAbsolutePath();
-                    exportDirValue.setText(exportPath);
+                String exportPath = exportDirChooser.getSelectedFile().getAbsolutePath();
+                exportDirValue.setText(exportPath);
 
-                    System.out.println("You chose to open this file: " +
-                            exportDirChooser.getSelectedFile().getName());
-                }
+                System.out.println("You chose to open this file: " +
+                        exportDirChooser.getSelectedFile().getName());
             }
         });
 
         //Resets all the values
-        resetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                errorText.setText(" ");
-                widthField.setText("");
-                heightField.setText("");
-                freezeRed.setSelected(false);
-                freezeGreen.setSelected(false);
-                freezeBlue.setSelected(false);
-                turnOnCircles.setSelected(false);
-                turnOnOctagons.setSelected(false);
-                turnOnSquares.setSelected(false);
-                turnOnPolygons.setSelected(false);
-                exportDirValue.setText("");
-                prefixValue.setText("");
-                numberOfRuns.setText("");
-                list1.clearSelection();
-                filePath.setText("");
-                dispFilePath.setText("");
-                firstColor.setEnabled(false);
-                firstColor.setBackground(SetupWindow.getBackground());
-                secondColor.setEnabled(false);
-                secondColor.setBackground(SetupWindow.getBackground());
-                thirdColor.setEnabled(false);
-                thirdColor.setBackground(SetupWindow.getBackground());
+        resetButton.addActionListener(e -> {
+            errorText.setText(" ");
+            widthField.setText("");
+            heightField.setText("");
+            freezeRed.setSelected(false);
+            freezeGreen.setSelected(false);
+            freezeBlue.setSelected(false);
+            turnOnCircles.setSelected(false);
+            turnOnOctagons.setSelected(false);
+            turnOnSquares.setSelected(false);
+            turnOnPolygons.setSelected(false);
+            exportDirValue.setText("");
+            prefixValue.setText("");
+            numberOfRuns.setText("");
+            extensionList.clearSelection();
+            filePath.setText("");
+            dispFilePath.setText("");
+            firstColor.setVisible(false);
+            firstColor.setEnabled(false);
+            firstColor.setBackground(SetupWindow.getBackground());
+            secondColor.setVisible(false);
+            secondColor.setEnabled(false);
+            secondColor.setBackground(SetupWindow.getBackground());
+            thirdColor.setVisible(false);
+            thirdColor.setEnabled(false);
+            thirdColor.setBackground(SetupWindow.getBackground());
+        });
+
+        getPopColorButton.addActionListener(e -> {
+            boolean success = loadImage();
+            if (success) {
+                Color[] topColors = getTopColors(3);
+                displayTopColors(topColors);
             }
         });
 
-        resetThisTabButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                filePath.setText("");
-                dispFilePath.setText("");
-                firstColor.setEnabled(false);
-                firstColor.setBackground(SetupWindow.getBackground());
-                secondColor.setEnabled(false);
-                secondColor.setBackground(SetupWindow.getBackground());
-                thirdColor.setEnabled(false);
-                thirdColor.setBackground(SetupWindow.getBackground());
+        firstColor.addActionListener(e -> setColors(firstColor.getBackground()));
 
-            }
-        });
+        secondColor.addActionListener(e -> setColors(secondColor.getBackground()));
 
-        getPopColorButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean success = loadImage();
-                if (success) {
-                    Color[] topColors = getTopColors(3);
-                    displayTopColors(topColors);
-                }
-            }
-        });
-
-        firstColor.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setColors(firstColor.getBackground());
-            }
-        });
-
-        secondColor.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setColors(secondColor.getBackground());
-            }
-        });
-
-        thirdColor.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setColors(thirdColor.getBackground());
-            }
-        });
+        thirdColor.addActionListener(e -> setColors(thirdColor.getBackground()));
 
     }
 
@@ -375,23 +334,26 @@ public class SetupWindow {
      * Display Top Colors
      * ----
      * Takes the top three colors and puts them onto the JPanel as buttons for the user to select
-     * @param topColors
+     * @param topColors - the array of the top colors
      */
-    public void displayTopColors(Color[] topColors){
+    private void displayTopColors(Color[] topColors){
         //We have to check each index in case there are less than three.
         if (topColors[0] != null) {
+            firstColor.setVisible(true);
             firstColor.setEnabled(true);
             firstColor.setBackground(topColors[0]);
             firstColor.setOpaque(true);
             firstColor.setBorderPainted(false);
         }
         if (topColors[1] != null) {
+            secondColor.setVisible(true);
             secondColor.setEnabled(true);
             secondColor.setBackground(topColors[1]);
             secondColor.setOpaque(true);
             secondColor.setBorderPainted(false);
         }
         if (topColors[2] != null) {
+            thirdColor.setVisible(true);
             thirdColor.setEnabled(true);
             thirdColor.setBackground(topColors[2]);
             thirdColor.setOpaque(true);
@@ -399,12 +361,22 @@ public class SetupWindow {
         }
     }
 
+    private void updatePreviewColor(){
+        int red = redSlider.getValue();
+        int blue = blueSlider.getValue();
+        int green = greenSlider.getValue();
+
+        Color previewColor = new Color(red,green,blue);
+        selectedColor.setBackground(previewColor);
+
+    }
+
     /**
      * Attempts to load the image
      * @return
      * Returns True if it is successful, returns false if it is not.
      */
-    public boolean loadImage(){
+    private boolean loadImage(){
 
         sourceImage = null;
         try {
@@ -434,9 +406,9 @@ public class SetupWindow {
      * @param numColors - the number of colors to return
      * @return - An array of colors, indexed in descending order (Most Popular is 0 index).
      */
-    public Color[] getTopColors(int numColors){
+    private Color[] getTopColors(int numColors){
         Color[] returnColors = new Color[numColors];
-        HashMap<Color, Integer> colorMap = new HashMap<Color, Integer>();
+        HashMap<Color, Integer> colorMap = new HashMap<>();
         int width = sourceImage.getWidth();
         int height = sourceImage.getHeight();
         for (int i = 0; i < width; i++){
@@ -468,7 +440,7 @@ public class SetupWindow {
         return returnColors;
     }
 
-    public void setColors(Color col){
+    private void setColors(Color col){
         redSlider.setValue(col.getRed());
         blueSlider.setValue(col.getBlue());
         greenSlider.setValue(col.getGreen());
