@@ -9,6 +9,7 @@ In 2017, I decided to try a different approach to generating backgrounds. For th
 In September 2019, I decided to revist the project and redesign the UI so that it made more sense.
 
 ## Here are some examples of the generated backgrounds
-![The Rangers](/images/Rangers.png =192x108)
-![The Bruins](/images/Bruins.png =192x108)
-![The Coyotes](/images/Coyotes.png =192x108)
+
+<img src="/images/Rangers.png" width=192 height=108 />
+<img src="/images/Bruins.png" width=192 height=108 />
+<img src="/images/Coyotes.png" width=192 height=108 />
