@@ -407,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569517438765</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Adding the display color so it works on Mac and">
+      <created>1569555379147</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1569555379147</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -456,7 +463,8 @@
     <MESSAGE value="Fixed the aspect ratio with the previous commit, but messed up the commit message." />
     <MESSAGE value="Starting the restructuring of the UI." />
     <MESSAGE value="More UI restructuring and starting to refactor the Java file so it can be read easier." />
-    <option name="LAST_COMMIT_MESSAGE" value="More UI restructuring and starting to refactor the Java file so it can be read easier." />
+    <MESSAGE value="Adding the display color so it works on Mac and" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding the display color so it works on Mac and" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
