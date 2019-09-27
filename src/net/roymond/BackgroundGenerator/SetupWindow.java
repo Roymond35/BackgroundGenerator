@@ -70,6 +70,7 @@ public class SetupWindow {
     private JComboBox alignment;
     private JTextField desiredX;
     private JTextField desiredY;
+    private JPanel displayColor;
     private JButton selectedColor;
     private boolean imageLoaded = false;
     private BufferedImage sourceImage;
@@ -82,6 +83,7 @@ public class SetupWindow {
     public SetupWindow() {
 
         errorText.setText(" ");
+        updatePreviewColor();
 
         // Hiding objects that aren't needed immediately
         firstColor.setVisible(false);
@@ -229,6 +231,7 @@ public class SetupWindow {
                 System.out.println("You chose to open this file: " +
                         chooser.getSelectedFile().getName());
             }
+            getPopColorButton.setEnabled(true);
             imageLoaded = false;
         });
 
@@ -332,7 +335,7 @@ public class SetupWindow {
         int green = greenSlider.getValue();
 
         Color previewColor = new Color(red,green,blue);
-        selectedColor.setBackground(previewColor);
+        displayColor.setBackground(previewColor);
 
     }
 

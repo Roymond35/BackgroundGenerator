@@ -10,6 +10,6 @@ In September 2019, I decided to revist the project and redesign the UI so that i
 
 ## Here are some examples of the generated backgrounds
 
-<img src="/images/Rangers.png" width=192 height=108 />
-<img src="/images/Bruins.png" width=192 height=108 />
-<img src="/images/Coyotes.png" width=192 height=108 />
+<img src="/images/Rangers.png" width=192 height=108>
+<img src="/images/Bruins.png" width=192 height=108>
+<img src="/images/Coyotes.png" width=192 height=108>

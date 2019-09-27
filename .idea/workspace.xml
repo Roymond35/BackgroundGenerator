@@ -6,9 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be0c2440-2831-4463-9333-519f55f1e922" name="Default" comment="More UI restructuring and starting to refactor the Java file so it can be read easier.">
+    <list default="true" id="be0c2440-2831-4463-9333-519f55f1e922" name="Default" comment="Adding the display color so it works on Mac and">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java" afterDir="false" />
     </list>
