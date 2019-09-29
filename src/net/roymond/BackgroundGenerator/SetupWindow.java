@@ -71,6 +71,7 @@ public class SetupWindow {
     private JTextField desiredX;
     private JTextField desiredY;
     private JPanel displayColor;
+    private JLabel alignmentLabel;
     private JButton selectedColor;
     private boolean imageLoaded = false;
     private BufferedImage sourceImage;
@@ -85,11 +86,14 @@ public class SetupWindow {
         errorText.setText(" ");
         updatePreviewColor();
 
+        exportDirValue.setText(System.getProperty("user.dir"));
+
         // Hiding objects that aren't needed immediately
         firstColor.setVisible(false);
         secondColor.setVisible(false);
         thirdColor.setVisible(false);
         getPopColorButton.setEnabled(false);
+        setImagePanelStatus(false); // We don't want this enabled unless there is an image
 
         //Formatting the slider labels so they are consistent.
         deltaSliderLabel.setText(String.valueOf(deltaSlider.getValue()));
@@ -230,6 +234,7 @@ public class SetupWindow {
                 filePath.setText( chooser.getSelectedFile().getAbsolutePath() );
                 System.out.println("You chose to open this file: " +
                         chooser.getSelectedFile().getName());
+                setImagePanelStatus(true);
             }
             getPopColorButton.setEnabled(true);
             imageLoaded = false;
@@ -337,6 +342,18 @@ public class SetupWindow {
         Color previewColor = new Color(red,green,blue);
         displayColor.setBackground(previewColor);
 
+    }
+
+    private void setImagePanelStatus(boolean status){
+        imagePositionPanel.setEnabled(status);
+        enableImage.setEnabled(status);
+        alignment.setEnabled(status);
+        desiredX.setEnabled(status);
+        desiredY.setEnabled(status);
+        xLabel.setEnabled(status);
+        yLabel.setEnabled(status);
+        alignmentLabel.setEnabled(status);
+        scalingLabel.setEnabled(status);
     }
 
     /**

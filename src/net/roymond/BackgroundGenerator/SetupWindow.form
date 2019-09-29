@@ -484,7 +484,7 @@
                   <color color="-4473925"/>
                 </border>
                 <children>
-                  <component id="c1523" class="javax.swing.JLabel">
+                  <component id="c1523" class="javax.swing.JLabel" binding="alignmentLabel">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
