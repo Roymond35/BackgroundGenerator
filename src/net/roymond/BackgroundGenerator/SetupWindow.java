@@ -490,11 +490,18 @@ public class SetupWindow {
     public static void main(String[] args) {
         frame = new JFrame("SetupWindow");
         frame.setTitle("Roy's Background Generator");
-        frame.setContentPane(new SetupWindow().SetupWindow);
+
+        JScrollPane scrollPane = new JScrollPane(new SetupWindow().SetupWindow);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        frame.setContentPane(scrollPane);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+
+
         frame.pack();
         frame.setVisible(true);
-        frame.setResizable(false);
+
 
 
 

@@ -6,9 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be0c2440-2831-4463-9333-519f55f1e922" name="Default" comment="Adding the display color so it works on Mac and">
+    <list default="true" id="be0c2440-2831-4463-9333-519f55f1e922" name="Default" comment="Adding the display color so it works on Mac">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/roymond/BackgroundGenerator/SetupWindow.java" afterDir="false" />
     </list>
@@ -414,8 +413,25 @@
       <option name="project" value="LOCAL" />
       <updated>1569555379147</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Adding the display color so it works on Mac">
+      <created>1569555451093</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1569555451093</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -439,7 +455,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Started playing around with the UI." />
     <MESSAGE value="Added the basic layout. Still not completely happy with it but it can work." />
     <MESSAGE value="I think that this is good enough to be tested now." />
     <MESSAGE value="Adding the reset button. For some reason it doesn't always reset the values however. I think I am going to have to refactor the numeric inputs..." />
@@ -464,7 +479,8 @@
     <MESSAGE value="Starting the restructuring of the UI." />
     <MESSAGE value="More UI restructuring and starting to refactor the Java file so it can be read easier." />
     <MESSAGE value="Adding the display color so it works on Mac and" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding the display color so it works on Mac and" />
+    <MESSAGE value="Adding the display color so it works on Mac" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding the display color so it works on Mac" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -485,82 +501,5 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>BackgroundGenerator:jar</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>BackgroundGenerator</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
